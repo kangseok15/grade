@@ -1,0 +1,271 @@
+import React, { useState } from 'react';
+import { CourseRecord, StudentProfile, ConversionMethod, SubjectCategory } from '../types';
+import { convertGrade5ToGrade9 } from '../utils/gradeConversion';
+import {
+  Search,
+  Filter,
+  Trash2,
+  Edit2,
+  FileSpreadsheet,
+  Download,
+} from 'lucide-react';
+
+interface TranscriptTableProps {
+  student: StudentProfile;
+  gradeSystemMode: '5grade' | '9grade' | 'both';
+  conversionMethod: ConversionMethod;
+  onEditCourse: (course: CourseRecord) => void;
+  onDeleteCourse: (courseId: string) => void;
+}
+
+export const TranscriptTable: React.FC<TranscriptTableProps> = ({
+  student,
+  gradeSystemMode,
+  conversionMethod,
+  onEditCourse,
+  onDeleteCourse,
+}) => {
+  const [selectedSemester, setSelectedSemester] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const semesters = Array.from(new Set(student.records.map((r) => r.semester))).sort();
+  const categories = Array.from(new Set(student.records.map((r) => r.category)));
+
+  // Filter records
+  const filtered = student.records.filter((r) => {
+    if (selectedSemester !== 'all' && r.semester !== selectedSemester) return false;
+    if (selectedCategory !== 'all' && r.category !== selectedCategory) return false;
+    if (searchQuery.trim() && !r.subjectName.toLowerCase().includes(searchQuery.toLowerCase().trim())) {
+      return false;
+    }
+    return true;
+  });
+
+  // Calculate stats for current filter view
+  const totalUnits = filtered.reduce((acc, r) => acc + (r.units || 1), 0);
+  const gradedCourses = filtered.filter((r) => r.rankGrade5 != null && r.rankGrade5 > 0);
+  const avgGrade5 =
+    gradedCourses.length > 0
+      ? +(
+          gradedCourses.reduce((acc, r) => acc + r.rankGrade5! * (r.units || 1), 0) /
+          gradedCourses.reduce((acc, r) => acc + (r.units || 1), 0)
+        ).toFixed(2)
+      : 0;
+
+  return (
+    <div className="bg-white rounded-xl border border-stone-200 shadow-xs p-5" id="transcript-table-section">
+      {/* Table Header Controls */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-stone-100 gap-3">
+        <div>
+          <div className="flex items-center gap-2">
+            <h3 className="text-base font-bold text-stone-900 tracking-tight flex items-center gap-2">
+              <FileSpreadsheet className="w-5 h-5 text-amber-500" />
+              개인별 점수자료 일람표 [학생부]
+            </h3>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold">
+              {student.school} {student.grade}학년 {student.classNum}반 {student.name}
+            </span>
+          </div>
+          <p className="text-xs text-stone-500 mt-0.5">
+            내신닷컴 UNIV 대입정보시스템 표준 학생부 점수자료 양식
+          </p>
+        </div>
+
+        {/* View Statistics */}
+        <div className="flex items-center gap-3 text-xs bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-200 font-medium">
+          <span>조회 과목수: <strong className="text-stone-900">{filtered.length}개</strong></span>
+          <span>•</span>
+          <span>이수 단위합: <strong className="text-stone-900">{totalUnits}단위</strong></span>
+          <span>•</span>
+          <span>
+            선택 가중평균: <strong className="text-blue-700">{avgGrade5 > 0 ? `${avgGrade5}등급` : '-'}</strong>
+          </span>
+        </div>
+      </div>
+
+      {/* Filter and Search Bar */}
+      <div className="py-3.5 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Semester Selector */}
+          <div className="flex items-center bg-stone-100 rounded-lg p-0.5 border border-stone-200">
+            <button
+              type="button"
+              onClick={() => setSelectedSemester('all')}
+              className={`px-2.5 py-1 rounded-md font-semibold cursor-pointer ${
+                selectedSemester === 'all'
+                  ? 'bg-white text-stone-900 shadow-2xs'
+                  : 'text-stone-600 hover:text-stone-900'
+              }`}
+            >
+              전체 학기
+            </button>
+            {semesters.map((sem) => (
+              <button
+                key={sem}
+                type="button"
+                onClick={() => setSelectedSemester(sem)}
+                className={`px-2.5 py-1 rounded-md font-semibold cursor-pointer ${
+                  selectedSemester === sem
+                    ? 'bg-white text-stone-900 shadow-2xs'
+                    : 'text-stone-600 hover:text-stone-900'
+                }`}
+              >
+                {sem}학기
+              </button>
+            ))}
+          </div>
+
+          {/* Category Dropdown */}
+          <select
+            id="transcript-category-filter"
+            aria-label="교과목 필터"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="bg-stone-50 border border-stone-200 rounded-lg px-2.5 py-1.5 text-xs text-stone-800 font-medium outline-hidden"
+          >
+            <option value="all">전체 교과군</option>
+            {categories.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Search Input */}
+        <div className="relative w-full sm:w-60">
+          <Search className="w-3.5 h-3.5 text-stone-400 absolute left-3 top-2.5" />
+          <input
+            id="transcript-search-input"
+            type="text"
+            placeholder="과목명 검색 (예: 화학, 대수...)"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-8 pr-3 py-1.5 bg-stone-50 border border-stone-200 rounded-lg text-xs text-stone-800 placeholder-stone-400 outline-hidden focus:border-stone-400 focus:bg-white transition-all"
+          />
+        </div>
+      </div>
+
+      {/* Main Table */}
+      <div className="overflow-x-auto border border-stone-200 rounded-lg">
+        <table className="w-full text-left text-xs whitespace-nowrap min-w-[950px]">
+          <thead className="bg-stone-100 text-stone-700 font-semibold border-b border-stone-200 whitespace-nowrap">
+            <tr>
+              <th className="py-2.5 px-3 whitespace-nowrap">학기</th>
+              <th className="py-2.5 px-3 whitespace-nowrap">교과</th>
+              <th className="py-2.5 px-3 whitespace-nowrap">과목명</th>
+              <th className="py-2.5 px-2 whitespace-nowrap">구분</th>
+              <th className="py-2.5 px-2 text-center whitespace-nowrap">단위수</th>
+              <th className="py-2.5 px-2 text-center whitespace-nowrap">원점수</th>
+              <th className="py-2.5 px-2 text-center whitespace-nowrap">과목평균</th>
+              <th className="py-2.5 px-2 text-center whitespace-nowrap">성취도</th>
+              <th className="py-2.5 px-2 text-center bg-blue-50 text-blue-900 font-bold whitespace-nowrap">
+                5등급 석차
+              </th>
+              {(gradeSystemMode === '9grade' || gradeSystemMode === 'both') && (
+                <th className="py-2.5 px-2 text-center bg-amber-50 text-amber-950 font-bold whitespace-nowrap">
+                  9등급 환산
+                </th>
+              )}
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">수강자</th>
+              <th className="py-2.5 px-3 whitespace-nowrap">성취비율 (A/B/C/D/E)</th>
+              <th className="py-2.5 px-2 text-center whitespace-nowrap">관리</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-stone-200 font-medium text-stone-800 whitespace-nowrap">
+            {filtered.length === 0 ? (
+              <tr>
+                <td colSpan={13} className="py-8 text-center text-stone-400 text-xs whitespace-nowrap">
+                  조건에 맞는 과목 성적 데이터가 없습니다.
+                </td>
+              </tr>
+            ) : (
+              filtered.map((r) => {
+                const isGrade1 = r.rankGrade5 === 1;
+                const converted9 = r.rankGrade5
+                  ? convertGrade5ToGrade9(r.rankGrade5, conversionMethod).grade9Equivalent
+                  : null;
+
+                return (
+                  <tr
+                    key={r.id}
+                    className={`hover:bg-stone-50/90 transition-colors whitespace-nowrap ${
+                      isGrade1 ? 'bg-amber-50/15' : ''
+                    }`}
+                  >
+                    <td className="py-2 px-3 text-stone-600 font-semibold whitespace-nowrap">{r.semester}</td>
+                    <td className="py-2 px-3 text-stone-700 whitespace-nowrap">{r.category}</td>
+                    <td className="py-2 px-3 font-bold text-stone-900 flex items-center gap-1.5 whitespace-nowrap">
+                      {r.subjectName}
+                      {isGrade1 && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" title="1등급 과목"></span>
+                      )}
+                    </td>
+                    <td className="py-2 px-2 text-stone-500 text-[11px] whitespace-nowrap">{r.courseType}</td>
+                    <td className="py-2 px-2 text-center font-semibold whitespace-nowrap">{r.units}</td>
+                    <td className="py-2 px-2 text-center font-bold text-stone-900 whitespace-nowrap">
+                      {r.rawScore ?? '-'}
+                    </td>
+                    <td className="py-2 px-2 text-center text-stone-500 whitespace-nowrap">
+                      {r.subjectMean ?? '-'}
+                    </td>
+                    <td className="py-2 px-2 text-center whitespace-nowrap">
+                      <span
+                        className={`inline-block px-1.5 py-0.5 rounded-md text-[11px] font-bold whitespace-nowrap ${
+                          r.achievement === 'A'
+                            ? 'bg-blue-100 text-blue-800'
+                            : r.achievement === 'B'
+                            ? 'bg-stone-100 text-stone-800'
+                            : 'bg-stone-100 text-stone-600'
+                        }`}
+                      >
+                        {r.achievement}
+                      </span>
+                    </td>
+                    <td className="py-2 px-2 text-center bg-blue-50/30 font-extrabold text-blue-900 whitespace-nowrap">
+                      {r.rankGrade5 ? `${r.rankGrade5}등급` : '-'}
+                    </td>
+                    {(gradeSystemMode === '9grade' || gradeSystemMode === 'both') && (
+                      <td className="py-2 px-2 text-center bg-amber-50/30 font-bold text-amber-900 whitespace-nowrap">
+                        {converted9 ? `${converted9}등급` : '-'}
+                      </td>
+                    )}
+                    <td className="py-2 px-3 text-center text-stone-500 whitespace-nowrap">
+                      {r.studentCount ? `${r.studentCount}명` : '-'}
+                    </td>
+                    <td className="py-2 px-3 text-[11px] text-stone-500 font-mono whitespace-nowrap">
+                      {r.achievementRatios
+                        ? `${r.achievementRatios.A}% / ${r.achievementRatios.B}% / ${r.achievementRatios.C}% / ${r.achievementRatios.D}% / ${r.achievementRatios.E}%`
+                        : '-'}
+                    </td>
+                    <td className="py-2 px-2 text-center whitespace-nowrap">
+                      <div className="flex items-center justify-center gap-1">
+                        <button
+                          type="button"
+                          onClick={() => onEditCourse(r)}
+                          className="p-1 hover:text-stone-900 text-stone-400 rounded-md transition-colors cursor-pointer"
+                          title="과목 수정"
+                        >
+                          <Edit2 className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => onDeleteCourse(r.id)}
+                          className="p-1 hover:text-rose-600 text-stone-400 rounded-md transition-colors cursor-pointer"
+                          title="과목 삭제"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};

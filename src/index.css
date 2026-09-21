@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --paper: #f5f4ee;
+  --surface: #ffffff;
+  --surface-alt: #eeede3;
+  --ink: #1c2333;
+  --ink-secondary: #545b6e;
+  --muted: #8a8f7f;
+  --border: rgba(28, 35, 51, 0.12);
+  --border-strong: rgba(28, 35, 51, 0.22);
+  --accent: #b6392f;
+  --accent-soft: #f3e2df;
+  --good: #0ca30c;
+  --warning: #c98500;
+  --serious: #c15a2e;
+  --critical: #c1332f;
+  --korean: #2a78d6;
+  --math: #d9601f;
+  --english: #159a6c;
+  --history: #c98500;
+  --elective1: #c94f79;
+  --elective2: #227a22;
+  --shadow: 0 1px 2px rgba(28, 23, 15, 0.06), 0 6px 20px -10px rgba(28, 23, 15, 0.18);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #14151a;
+  --surface: #1b1c22;
+  --surface-alt: #22232a;
+  --ink: #f1f0ea;
+  --ink-secondary: #c3c2b7;
+  --muted: #8f9099;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --accent: #e07a6f;
+  --accent-soft: #3a2321;
+  --good: #3fc23f;
+  --warning: #e0a838;
+  --serious: #e08359;
+  --critical: #e06a66;
+  --korean: #5a9be8;
+  --math: #e8874f;
+  --english: #3fbd8f;
+  --history: #dba53a;
+  --elective1: #e588a8;
+  --elective2: #5fbf5f;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans KR", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-kr {
+  font-family: "Noto Serif KR", Georgia, serif;
+}
+
+.font-sans-kr {
+  font-family: "Noto Sans KR", system-ui, -apple-system, sans-serif;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+
+/* Global No-Scrollbar Utility */
+.no-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Korean Typography: Strict Single-Line & No-Wrap Rules for Reports */
+.keep-all {
+  word-break: keep-all !important;
+}
+
+.whitespace-nowrap,
+.nowrap {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+
+#report-page-1 h1,
+#report-page-1 h2,
+#report-page-1 h3,
+#report-page-2 h1,
+#report-page-2 h2,
+#report-page-2 h3,
+#report-page-3 h1,
+#report-page-3 h2,
+#report-page-3 h3,
+#ai-report-printable h1,
+#ai-report-printable h2,
+#ai-report-printable h3,
+#ai-report-printable h4,
+.report-heading,
+.comparison-pill,
+.comparison-pill * {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+
+@media print {
+  :root, [data-theme="dark"], [data-theme="light"] {
+    --paper: #ffffff !important;
+    --surface: #ffffff !important;
+    --surface-alt: #f8fafc !important;
+    --ink: #0f172a !important;
+    --ink-secondary: #334155 !important;
+    --muted: #64748b !important;
+    --border: #e2e8f0 !important;
+    --border-strong: #cbd5e1 !important;
+    color-scheme: light !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 10mm 8mm;
+  }
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  html, body {
+    background: #ffffff !important;
+    color: #1c2333 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .no-print, [data-no-print="true"], header, footer, #app-top-header {
+    display: none !important;
+  }
+  main {
+    space-y: 0 !important;
+  }
+  #report-page-1 {
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+    overflow: visible !important;
+  }
+  #report-page-2 {
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+    overflow: visible !important;
+  }
+  #report-page-3 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  #report-page-1,
+  #report-page-2,
+  #report-page-3,
+  #aiReport,
+  #ai-report-printable,
+  #cohort-dashboard {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    color-scheme: light !important;
+  }
+  #cohort-dashboard,
+  #cohort-printable-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+  #cohort-page-1,
+  #cohort-page-2 {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    page-break-before: auto !important;
+    break-before: auto !important;
+    page-break-after: auto !important;
+    break-after: auto !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  #cohort-dashboard section,
+  #cohort-printable-page section {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+    border-color: #cbd5e1 !important;
+    background-color: #ffffff !important;
+    margin-bottom: 8px !important;
+    padding: 10px 12px !important;
+  }
+  #cohort-dashboard table,
+  #cohort-printable-page table {
+    width: 100% !important;
+  }
+  #cohort-dashboard tr,
+  #cohort-printable-page tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}

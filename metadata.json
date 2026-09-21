@@ -1,0 +1,8 @@
+{
+  "name": "미래인재반 성적 분석 시스템 (모의고사+내신 통합)",
+  "description": "숭신고등학교 미래인재반 학생들의 모의고사 성적 분석과 내신(학생부) 성적 분석을 하나의 학생 선택 화면에서 함께 제공하는 통합 웹 애플리케이션",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
