@@ -129,15 +129,15 @@ export const PrintableReportView: React.FC<PrintableReportViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-stone-100 flex flex-col items-center">
+    <div className="min-h-screen bg-[var(--surface-alt)] flex flex-col items-center">
       {/* Top Floating Control Bar (Hidden on print) */}
-      <header className="sticky top-0 z-50 w-full bg-stone-900 text-white shadow-md border-b border-stone-800 print:hidden">
+      <header className="sticky top-0 z-50 w-full bg-[var(--ink)] text-white shadow-md border-b border-[var(--border-strong)] print:hidden">
         <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             {onBackToApp ? (
               <button
                 onClick={onBackToApp}
-                className="p-1.5 hover:bg-stone-800 rounded-lg text-stone-300 hover:text-white transition-colors cursor-pointer"
+                className="p-1.5 hover:bg-[var(--ink)] rounded-lg text-[var(--muted)] hover:text-white transition-colors cursor-pointer"
                 title="메인 화면으로 이동"
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -145,7 +145,7 @@ export const PrintableReportView: React.FC<PrintableReportViewProps> = ({
             ) : (
               <a
                 href={window.location.pathname}
-                className="p-1.5 hover:bg-stone-800 rounded-lg text-stone-300 hover:text-white transition-colors"
+                className="p-1.5 hover:bg-[var(--ink)] rounded-lg text-[var(--muted)] hover:text-white transition-colors"
                 title="메인 화면으로 이동"
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -155,13 +155,13 @@ export const PrintableReportView: React.FC<PrintableReportViewProps> = ({
               <h1 className="text-sm font-black text-white flex items-center gap-2">
                 <span>숭신고등학교 진로진학상담부 2028 진학상담 리포트</span>
                 {pdfSuccess && (
-                  <span className="inline-flex items-center gap-1 text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                  <span className="inline-flex items-center gap-1 text-[10px] bg-[var(--good)]/20 text-[var(--good)] px-2 py-0.5 rounded-full font-bold">
                     <FileCheck className="w-3 h-3" />
                     PDF 다운로드 완료
                   </span>
                 )}
               </h1>
-              <p className="text-[11px] text-stone-400 font-medium">
+              <p className="text-[11px] text-[var(--muted)] font-medium">
                 {student.name} 학생 ({student.grade}학년 {student.classNum}반) A4 인쇄 및 고화질 PDF 저장
               </p>
             </div>
@@ -170,7 +170,7 @@ export const PrintableReportView: React.FC<PrintableReportViewProps> = ({
           <div className="flex items-center gap-2.5">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-400 hover:bg-amber-300 text-stone-950 font-black rounded-lg text-xs cursor-pointer shadow-md transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--accent)] hover:bg-[var(--accent)]/80 text-white font-black rounded-lg text-xs cursor-pointer shadow-md transition-all"
             >
               <Printer className="w-4 h-4" />
               <span>A4 인쇄 / PDF로 저장 (Ctrl+P)</span>
@@ -179,7 +179,7 @@ export const PrintableReportView: React.FC<PrintableReportViewProps> = ({
             <button
               onClick={handleDownloadPdf}
               disabled={isGeneratingPdf}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-700 hover:bg-blue-600 text-white font-bold rounded-lg text-xs cursor-pointer transition-all disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[var(--korean)] hover:bg-[var(--korean)] text-white font-bold rounded-lg text-xs cursor-pointer transition-all disabled:opacity-60"
             >
               {isGeneratingPdf ? (
                 <>
@@ -197,8 +197,8 @@ export const PrintableReportView: React.FC<PrintableReportViewProps> = ({
         </div>
 
         {/* Helpful browser tip bar */}
-        <div className="bg-stone-800 border-t border-stone-700 py-1.5 px-4 text-center text-[11px] text-stone-300 font-medium flex items-center justify-center gap-1.5">
-          <Info className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+        <div className="bg-[var(--ink)] border-t border-[var(--border-strong)] py-1.5 px-4 text-center text-[11px] text-[var(--muted)] font-medium flex items-center justify-center gap-1.5">
+          <Info className="w-3.5 h-3.5 text-[var(--accent)] shrink-0" />
           <span>
             <strong>브라우저 인쇄 안내:</strong> 인쇄 창(Ctrl+P)에서 <strong>[대상: PDF로 저장]</strong>을 선택하시면 글자가 깨지지 않는 최고 품질의 벡터 A4 PDF로 저장됩니다.
           </span>

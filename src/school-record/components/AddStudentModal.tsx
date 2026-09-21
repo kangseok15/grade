@@ -47,17 +47,17 @@ export const AddStudentModal: React.FC<AddStudentModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-      <div className="bg-white rounded-2xl border border-stone-200 shadow-xl max-w-md w-full overflow-hidden">
+      <div className="bg-[var(--surface)] rounded-2xl border border-[var(--border)] shadow-xl max-w-md w-full overflow-hidden">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-stone-200 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-[var(--border)] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <UserPlus className="w-5 h-5 text-amber-500" />
-            <h3 className="text-base font-bold text-stone-900">새 학생 등록</h3>
+            <UserPlus className="w-5 h-5 text-[var(--accent)]" />
+            <h3 className="text-base font-bold text-[var(--ink)]">새 학생 등록</h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
+            className="p-1 rounded-lg text-[var(--muted)] hover:text-[var(--ink-secondary)] hover:bg-[var(--surface-alt)] transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -66,34 +66,34 @@ export const AddStudentModal: React.FC<AddStudentModalProps> = ({
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4 text-xs">
           <div>
-            <label className="font-semibold text-stone-700 block mb-1">학생 이름 *</label>
+            <label className="font-semibold text-[var(--ink-secondary)] block mb-1">학생 이름 *</label>
             <input
               type="text"
               required
               placeholder="예: 홍길동"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+              className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">학교명</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">학교명</label>
               <input
                 type="text"
                 value={school}
                 onChange={(e) => setSchool(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">희망 계열/과정</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">희망 계열/과정</label>
               <select
                 aria-label="희망 계열/과정 선택"
                 value={track}
                 onChange={(e) => setTrack(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               >
                 <option value="자연계열 (과학·공학)">자연계열 (과학·공학)</option>
                 <option value="자연계열 (의약·이학)">자연계열 (의약·이학)</option>
@@ -107,63 +107,63 @@ export const AddStudentModal: React.FC<AddStudentModalProps> = ({
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">학년</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">학년</label>
               <input
                 type="number"
                 min="1"
                 max="3"
                 value={grade}
                 onChange={(e) => setGrade(Number(e.target.value))}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">반</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">반</label>
               <input
                 type="number"
                 min="1"
                 value={classNum}
                 onChange={(e) => setClassNum(Number(e.target.value))}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">번호</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">번호</label>
               <input
                 type="number"
                 min="1"
                 value={studentNum}
                 onChange={(e) => setStudentNum(Number(e.target.value))}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
           </div>
 
           <div>
-            <label className="font-semibold text-stone-700 block mb-1">진학 목표 및 비고</label>
+            <label className="font-semibold text-[var(--ink-secondary)] block mb-1">진학 목표 및 비고</label>
             <textarea
               rows={3}
               placeholder="예: 서울권 상위 공과대학 학생부종합전형 지원 희망"
               value={memo}
               onChange={(e) => setMemo(e.target.value)}
-              className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+              className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
             ></textarea>
           </div>
 
           {/* Footer */}
-          <div className="pt-4 border-t border-stone-200 flex items-center justify-end gap-2">
+          <div className="pt-4 border-t border-[var(--border)] flex items-center justify-end gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors cursor-pointer"
+              className="px-4 py-2 text-[var(--ink-secondary)] hover:bg-[var(--surface-alt)] rounded-lg transition-colors cursor-pointer"
             >
               취소
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-stone-900 text-white font-semibold rounded-lg hover:bg-stone-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-4 py-2 bg-[var(--ink)] text-white font-semibold rounded-lg hover:bg-[var(--ink)] transition-colors flex items-center gap-1.5 cursor-pointer"
             >
-              <Save className="w-4 h-4 text-amber-400" />
+              <Save className="w-4 h-4 text-[var(--accent)]" />
               <span>등록하기</span>
             </button>
           </div>

@@ -174,22 +174,22 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
   return (
     <div className="space-y-6" id="target-grade-simulator-section">
       {/* Top Banner */}
-      <div className="bg-white rounded-xl border border-stone-200 shadow-xs p-5">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-4 border-b border-stone-100 gap-4">
+      <div className="bg-[var(--surface)] rounded-xl border border-[var(--border)] shadow-xs p-5">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-4 border-b border-[var(--border)] gap-4">
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500 text-stone-950 flex items-center justify-center font-bold shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[var(--accent)] text-white flex items-center justify-center font-bold shrink-0">
               <Target className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-stone-900 tracking-tight">
+                <h3 className="text-base font-bold text-[var(--ink)] tracking-tight">
                   다음 학기({nextSemester}) 목표 성적 시뮬레이터 (What-If 분석)
                 </h3>
-                <span className="text-xs px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 font-semibold">
+                <span className="text-xs px-2 py-0.5 rounded-md bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent)]/25 font-semibold">
                   성적 역전 및 누적 GPA 도약 분석
                 </span>
               </div>
-              <p className="text-xs text-stone-500 mt-0.5">
+              <p className="text-xs text-[var(--muted)] mt-0.5">
                 다음 학기 이수할 과목들의 예상 등급을 설정하여, 졸업 시점 누적 내신(5등급제 & 9등급 환산치)의 변화량과 입시 유리도를 사전에 측정합니다.
               </p>
             </div>
@@ -198,13 +198,13 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
           <div className="flex items-center gap-2 self-start lg:self-auto">
             <button
               onClick={() => handleSetAllGrade(1)}
-              className="px-3 py-1.5 bg-blue-50 text-blue-800 hover:bg-blue-100 border border-blue-200 rounded-lg text-xs font-bold transition-colors cursor-pointer"
+              className="px-3 py-1.5 bg-[var(--korean)]/10 text-[var(--korean)] hover:bg-[var(--korean)]/15 border border-[var(--korean)]/25 rounded-lg text-xs font-bold transition-colors cursor-pointer"
             >
               전과목 1등급 가정
             </button>
             <button
               onClick={handleReset}
-              className="px-3 py-1.5 bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-300 rounded-lg text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1"
+              className="px-3 py-1.5 bg-[var(--surface-alt)] text-[var(--ink-secondary)] hover:bg-[var(--border)] border border-[var(--border-strong)] rounded-lg text-xs font-semibold transition-colors cursor-pointer flex items-center gap-1"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>초기화</span>
@@ -215,16 +215,16 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
         {/* Before vs After Visual Scoreboard */}
         <div className="pt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Card 1: 5-Grade Cumulative GPA Shift */}
-          <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200">
-            <span className="text-xs font-bold text-blue-800 block">
+          <div className="p-4 rounded-xl bg-[var(--korean)]/60 border border-[var(--korean)]/25">
+            <span className="text-xs font-bold text-[var(--korean)] block">
               5등급제 전학년 누적 GPA 변화
             </span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-xl font-bold text-stone-400 line-through font-mono">
+              <span className="text-xl font-bold text-[var(--muted)] line-through font-mono">
                 {currentSummary.weightedGpa5}등급
               </span>
-              <ArrowRight className="w-4 h-4 text-blue-600" />
-              <span className="text-2xl font-black text-blue-950 font-mono">
+              <ArrowRight className="w-4 h-4 text-[var(--korean)]" />
+              <span className="text-2xl font-black text-[var(--korean)] font-mono">
                 {projectedSummary.weightedGpa5}등급
               </span>
             </div>
@@ -232,10 +232,10 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
               <span
                 className={`px-2 py-0.5 rounded font-bold ${
                   gpa5Improvement > 0
-                    ? 'bg-emerald-100 text-emerald-800'
+                    ? 'bg-[var(--good)]/15 text-[var(--good)]'
                     : gpa5Improvement < 0
-                    ? 'bg-rose-100 text-rose-800'
-                    : 'bg-stone-100 text-stone-600'
+                    ? 'bg-[var(--critical)]/15 text-[var(--critical)]'
+                    : 'bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                 }`}
               >
                 {gpa5Improvement > 0
@@ -244,23 +244,23 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
                   ? `▼ ${Math.abs(gpa5Improvement)}등급 하락`
                   : '변동 없음'}
               </span>
-              <span className="text-[11px] text-stone-500">
+              <span className="text-[11px] text-[var(--muted)]">
                 총 {projectedSummary.totalUnits}단위 기준
               </span>
             </div>
           </div>
 
           {/* Card 2: 9-Grade Equivalent Shift */}
-          <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200">
-            <span className="text-xs font-bold text-amber-800 block">
+          <div className="p-4 rounded-xl bg-[var(--accent-soft)]/60 border border-[var(--accent)]/25">
+            <span className="text-xs font-bold text-[var(--accent)] block">
               3개 교육청 통합 9등급 환산치 변화
             </span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-xl font-bold text-stone-400 line-through font-mono">
+              <span className="text-xl font-bold text-[var(--muted)] line-through font-mono">
                 {currentSummary.weightedGpa9}등급
               </span>
-              <ArrowRight className="w-4 h-4 text-amber-600" />
-              <span className="text-2xl font-black text-amber-950 font-mono">
+              <ArrowRight className="w-4 h-4 text-[var(--accent)]" />
+              <span className="text-2xl font-black text-[var(--accent)] font-mono">
                 약 {projectedSummary.weightedGpa9}등급
               </span>
             </div>
@@ -268,10 +268,10 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
               <span
                 className={`px-2 py-0.5 rounded font-bold ${
                   gpa9Improvement > 0
-                    ? 'bg-emerald-100 text-emerald-800'
+                    ? 'bg-[var(--good)]/15 text-[var(--good)]'
                     : gpa9Improvement < 0
-                    ? 'bg-rose-100 text-rose-800'
-                    : 'bg-stone-100 text-stone-600'
+                    ? 'bg-[var(--critical)]/15 text-[var(--critical)]'
+                    : 'bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                 }`}
               >
                 {gpa9Improvement > 0
@@ -284,23 +284,23 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
           </div>
 
           {/* Card 3: Next Term Goal Focus */}
-          <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 flex flex-col justify-between">
+          <div className="p-4 rounded-xl bg-[var(--surface-alt)] border border-[var(--border)] flex flex-col justify-between">
             <div>
-              <span className="text-xs font-bold text-stone-700 block">
+              <span className="text-xs font-bold text-[var(--ink-secondary)] block">
                 {nextSemester}학기 목표 학기 평균
               </span>
               <div className="flex items-baseline gap-2 mt-1">
-                <span className="text-2xl font-black text-stone-900 font-mono">
+                <span className="text-2xl font-black text-[var(--ink)] font-mono">
                   {simulatedTermGpa}등급
                 </span>
-                <span className="text-xs text-stone-500">
+                <span className="text-xs text-[var(--muted)]">
                   (총 {simulatedTermUnits}단위 목표)
                 </span>
               </div>
             </div>
-            <p className="text-[11px] text-stone-600 mt-2">
+            <p className="text-[11px] text-[var(--ink-secondary)] mt-2">
               누적 백분위: 상위 {currentCumRatio}% ➔{' '}
-              <strong className="text-blue-700 font-bold">
+              <strong className="text-[var(--korean)] font-bold">
                 상위 {projectedCumRatio}%
               </strong>{' '}
               ({cumRatioImprovement > 0 ? `+${cumRatioImprovement}%p 개선` : ''})
@@ -310,19 +310,19 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
       </div>
 
       {/* Interactive Simulation Course Table */}
-      <div className="bg-white rounded-xl border border-stone-200 shadow-xs overflow-hidden">
-        <div className="p-4 border-b border-stone-200 bg-stone-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <div className="bg-[var(--surface)] rounded-xl border border-[var(--border)] shadow-xs overflow-hidden">
+        <div className="p-4 border-b border-[var(--border)] bg-[var(--surface-alt)]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-amber-600" />
-            <span className="font-bold text-stone-900">
+            <BookOpen className="w-4 h-4 text-[var(--accent)]" />
+            <span className="font-bold text-[var(--ink)]">
               {nextSemester}학기 목표 이수 과목 및 등급 설정
             </span>
-            <span className="text-stone-400">({simulatedCourses.length}과목)</span>
+            <span className="text-[var(--muted)]">({simulatedCourses.length}과목)</span>
           </div>
 
           <button
             onClick={handleAddCourse}
-            className="inline-flex items-center gap-1 px-3 py-1.5 bg-stone-900 hover:bg-stone-800 text-white rounded-lg font-bold transition-colors cursor-pointer self-start sm:self-auto"
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--ink)] hover:bg-[var(--ink)] text-white rounded-lg font-bold transition-colors cursor-pointer self-start sm:self-auto"
           >
             <PlusCircle className="w-3.5 h-3.5" />
             <span>목표 과목 추가</span>
@@ -331,24 +331,24 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
 
         <div className="overflow-x-auto">
           <table className="w-full text-xs text-center border-collapse whitespace-nowrap min-w-[620px]">
-            <thead className="bg-stone-100 text-stone-700 font-bold border-b border-stone-200">
+            <thead className="bg-[var(--surface-alt)] text-[var(--ink-secondary)] font-bold border-b border-[var(--border)]">
               <tr>
                 <th className="py-2.5 px-4 text-left">과목명</th>
                 <th className="py-2.5 px-3">교과군</th>
                 <th className="py-2.5 px-3">이수 단위</th>
-                <th className="py-2.5 px-4 bg-amber-50 text-amber-950">
+                <th className="py-2.5 px-4 bg-[var(--accent-soft)] text-[var(--accent)]">
                   목표 석차등급 (5등급제)
                 </th>
                 <th className="py-2.5 px-3">9등급 환산 대응치</th>
                 <th className="py-2.5 px-3">작업</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-200 text-stone-800">
+            <tbody className="divide-y divide-[var(--border)] text-[var(--ink)]">
               {simulatedCourses.map((course) => {
                 const equiv9 = convertByEducationOffice(course.grade5, officeKey).grade9Equivalent;
 
                 return (
-                  <tr key={course.id} className="hover:bg-stone-50 transition-colors">
+                  <tr key={course.id} className="hover:bg-[var(--surface-alt)] transition-colors">
                     <td className="py-2.5 px-4 text-left">
                       <input
                         type="text"
@@ -356,7 +356,7 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
                         onChange={(e) =>
                           handleUpdateCourse(course.id, 'subjectName', e.target.value)
                         }
-                        className="px-2 py-1 bg-stone-50 border border-stone-300 rounded font-semibold text-stone-900 w-44 outline-hidden focus:bg-white focus:border-amber-500"
+                        className="px-2 py-1 bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded font-semibold text-[var(--ink)] w-44 outline-hidden focus:bg-[var(--surface)] focus:border-[var(--accent)]/50"
                       />
                     </td>
                     <td className="py-2.5 px-3">
@@ -369,7 +369,7 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
                             e.target.value as SubjectCategory
                           )
                         }
-                        className="px-2 py-1 bg-stone-50 border border-stone-300 rounded font-medium text-stone-700 outline-hidden cursor-pointer"
+                        className="px-2 py-1 bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded font-medium text-[var(--ink-secondary)] outline-hidden cursor-pointer"
                       >
                         <option value="국어">국어</option>
                         <option value="수학">수학</option>
@@ -387,7 +387,7 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
                         onChange={(e) =>
                           handleUpdateCourse(course.id, 'units', Number(e.target.value))
                         }
-                        className="px-2 py-1 bg-stone-50 border border-stone-300 rounded font-mono font-bold text-stone-800 outline-hidden cursor-pointer"
+                        className="px-2 py-1 bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded font-mono font-bold text-[var(--ink)] outline-hidden cursor-pointer"
                       >
                         {[1, 2, 3, 4, 5].map((u) => (
                           <option key={u} value={u}>
@@ -396,7 +396,7 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
                         ))}
                       </select>
                     </td>
-                    <td className="py-2.5 px-4 bg-amber-50/40">
+                    <td className="py-2.5 px-4 bg-[var(--accent-soft)]/40">
                       <div className="flex items-center justify-center gap-1.5">
                         {[1, 2, 3, 4, 5].map((g) => (
                           <button
@@ -405,23 +405,23 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
                             onClick={() => handleUpdateCourse(course.id, 'grade5', g)}
                             className={`w-7 h-7 rounded-md font-bold text-xs cursor-pointer transition-all ${
                               course.grade5 === g
-                                ? 'bg-amber-500 text-stone-950 shadow-xs ring-2 ring-amber-400 font-black'
-                                : 'bg-white border border-stone-300 text-stone-600 hover:bg-stone-100'
+                                ? 'bg-[var(--accent)] text-white shadow-xs ring-2 ring-[var(--accent)]/40 font-black'
+                                : 'bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--ink-secondary)] hover:bg-[var(--surface-alt)]'
                             }`}
                           >
                             {g}
                           </button>
                         ))}
-                        <span className="font-bold text-amber-950 ml-1">등급</span>
+                        <span className="font-bold text-[var(--accent)] ml-1">등급</span>
                       </div>
                     </td>
-                    <td className="py-2.5 px-3 font-mono font-bold text-stone-600">
+                    <td className="py-2.5 px-3 font-mono font-bold text-[var(--ink-secondary)]">
                       약 {equiv9.toFixed(2)}등급
                     </td>
                     <td className="py-2.5 px-3">
                       <button
                         onClick={() => handleRemoveCourse(course.id)}
-                        className="p-1 text-stone-400 hover:text-rose-600 rounded transition-colors cursor-pointer"
+                        className="p-1 text-[var(--muted)] hover:text-[var(--critical)] rounded transition-colors cursor-pointer"
                         title="과목 삭제"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -435,14 +435,14 @@ export const TargetGradeSimulator: React.FC<TargetGradeSimulatorProps> = ({
         </div>
 
         {/* Academic Coaching Advice */}
-        <div className="p-4 bg-stone-50 border-t border-stone-200 text-xs space-y-2">
+        <div className="p-4 bg-[var(--surface-alt)] border-t border-[var(--border)] text-xs space-y-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-amber-600" />
-            <span className="font-bold text-stone-900">
+            <Sparkles className="w-4 h-4 text-[var(--accent)]" />
+            <span className="font-bold text-[var(--ink)]">
               {student.name} 학생 맞춤형 다음 학기 내신 방어 전략 조언
             </span>
           </div>
-          <p className="text-stone-600 leading-relaxed text-[11px]">
+          <p className="text-[var(--ink-secondary)] leading-relaxed text-[11px]">
             {simulatedTermGpa <= 1.2
               ? `다음 학기 전과목 평균 ${simulatedTermGpa}등급을 달성할 경우, 전학년 누적 9등급 환산치가 약 ${projectedSummary.weightedGpa9}등급(상위 ${projectedCumRatio}%)으로 대폭 개선되어, 서울 상위 5개 대학(연세·고려·성균관·한양·서강) 학생부교과/종합 안정 합격권에 진입할 수 있습니다.`
               : `목표 설정 기준 전학년 누적치가 약 ${projectedSummary.weightedGpa9}등급으로 유지됩니다. 의약학 및 최상위권 진학을 목표로 한다면 단위수가 높은 수학(미적분)과 국어 교과를 최우선으로 1등급 확보하도록 집중 관리가 필요합니다.`}

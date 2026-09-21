@@ -114,30 +114,30 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
 
   return (
     <div
-      className="bg-white rounded-xl border border-stone-200 shadow-xs overflow-hidden"
+      className="bg-[var(--surface)] rounded-xl border border-[var(--border)] shadow-xs overflow-hidden"
       id="student-summary-card"
     >
       {/* Student Profile Ribbon */}
-      <div className="bg-stone-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-[var(--ink)] text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3.5">
-          <div className="w-12 h-12 rounded-full bg-amber-400 text-stone-900 font-extrabold text-xl flex items-center justify-center border-2 border-white shadow-xs">
+          <div className="w-12 h-12 rounded-full bg-[var(--accent)] text-white font-extrabold text-xl flex items-center justify-center border-2 border-[var(--paper)] shadow-xs">
             {student.name.charAt(0)}
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-xl font-bold tracking-tight text-white">{student.name}</h2>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-stone-800 text-stone-300 font-medium">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--ink)] text-[var(--muted)] font-medium">
                 {student.school}
               </span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-semibold border border-amber-400/30">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--accent)]/20 text-[var(--accent-soft)] font-semibold border border-[var(--accent)]/30">
                 {student.track}
               </span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 font-semibold border border-blue-400/30 flex items-center gap-1">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--korean)]/20 text-[var(--korean)] font-semibold border border-[var(--korean)]/30 flex items-center gap-1">
                 <Users className="w-3 h-3" />
                 미래인재반 ({student.grade}학년 {cohortCount}명)
               </span>
             </div>
-            <div className="text-xs text-stone-400 mt-0.5 flex items-center gap-2">
+            <div className="text-xs text-[var(--muted)] mt-0.5 flex items-center gap-2">
               <span>
                 {student.grade}학년 {student.classNum}반 {student.studentNum}번
               </span>
@@ -150,18 +150,18 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
         </div>
 
         {/* Trajectory Badge */}
-        <div className="flex items-center gap-2 bg-stone-800/80 px-3 py-1.5 rounded-lg border border-stone-700">
+        <div className="flex items-center gap-2 bg-[var(--ink)]/80 px-3 py-1.5 rounded-lg border border-[var(--border-strong)]">
           <TrendingUp
             className={`w-4 h-4 ${
               trajectory.trend === '상승형'
-                ? 'text-emerald-400'
+                ? 'text-[var(--good)]'
                 : trajectory.trend === '하강형'
-                ? 'text-rose-400'
-                : 'text-blue-400'
+                ? 'text-[var(--critical)]'
+                : 'text-[var(--korean)]'
             }`}
           />
           <div className="text-left">
-            <div className="text-[10px] text-stone-400 uppercase tracking-wider font-semibold">
+            <div className="text-[10px] text-[var(--muted)] uppercase tracking-wider font-semibold">
               {student.grade === 1 ? '1학년 성취 수준' : '학업 추세'}
             </div>
             <div className="text-xs font-bold text-white flex items-center gap-1">
@@ -176,17 +176,17 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
                 <span
                   className={`text-[11px] font-normal ${
                     trajectory.trend === '상승형'
-                      ? 'text-emerald-400'
+                      ? 'text-[var(--good)]'
                       : trajectory.trend === '하강형'
-                      ? 'text-rose-400'
-                      : 'text-stone-300'
+                      ? 'text-[var(--critical)]'
+                      : 'text-[var(--muted)]'
                   }`}
                 >
                   ({y1Summary.weightedGpa5 - y2Summary.weightedGpa5 >= 0 ? '+' : ''}
                   {+(y1Summary.weightedGpa5 - y2Summary.weightedGpa5).toFixed(2)}등급 개선)
                 </span>
               ) : (
-                <span className="text-[11px] font-normal text-amber-300">
+                <span className="text-[11px] font-normal text-[var(--accent-soft)]">
                   (1-1 평균 {allSummary.weightedGpa5}등급)
                 </span>
               )}
@@ -203,42 +203,42 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
         <div>
           <div className="flex flex-wrap items-center justify-between mb-2.5">
             <div>
-              <h3 className="text-xs font-bold text-stone-900 flex items-center gap-1.5 uppercase tracking-wide">
-                <Target className="w-4 h-4 text-blue-600" />
+              <h3 className="text-xs font-bold text-[var(--ink)] flex items-center gap-1.5 uppercase tracking-wide">
+                <Target className="w-4 h-4 text-[var(--korean)]" />
                 대입 주요 교과군 조합별 성적 & 미래인재반 ({student.grade}학년) 비교
               </h3>
-              <p className="text-[11px] text-stone-500 mt-0.5">
+              <p className="text-[11px] text-[var(--muted)] mt-0.5">
                 수시 전형별(전과목 / 국영수사과한국사 / 국영수사(한국사) / 국영수과) 반영 등급 및 미래인재반 동일 학년 친구들 평균과의 격차를 분석합니다.
               </p>
             </div>
 
-            <span className="text-xs px-2.5 py-1 rounded-md bg-stone-100 text-stone-700 font-semibold border border-stone-200">
+            <span className="text-xs px-2.5 py-1 rounded-md bg-[var(--surface-alt)] text-[var(--ink-secondary)] font-semibold border border-[var(--border)]">
               미래인재반 표본: {cohortCount}명 기준
             </span>
           </div>
 
-          <div className="border border-stone-200 rounded-lg shadow-2xs overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="border border-[var(--border)] rounded-lg shadow-2xs overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <table className="w-full text-center text-xs whitespace-nowrap">
-              <thead className="bg-stone-100 text-stone-700 font-semibold border-b border-stone-200 whitespace-nowrap">
+              <thead className="bg-[var(--surface-alt)] text-[var(--ink-secondary)] font-semibold border-b border-[var(--border)] whitespace-nowrap">
                 <tr>
                   <th className="py-2.5 px-2.5 text-left whitespace-nowrap">교과군 조합</th>
                   <th className="py-2.5 px-2 whitespace-nowrap">이수단위 / 과목</th>
-                  <th className="py-2.5 px-2 bg-blue-50/70 text-blue-900 font-bold whitespace-nowrap">
+                  <th className="py-2.5 px-2 bg-[var(--korean)]/70 text-[var(--korean)] font-bold whitespace-nowrap">
                     5등급제 평균
                   </th>
-                  <th className="py-2.5 px-2 bg-amber-50/70 text-amber-900 font-bold whitespace-nowrap">
+                  <th className="py-2.5 px-2 bg-[var(--accent-soft)]/70 text-[var(--accent)] font-bold whitespace-nowrap">
                     9등급 환산
                   </th>
-                  <th className="py-2.5 px-2 text-stone-600 whitespace-nowrap">
+                  <th className="py-2.5 px-2 text-[var(--ink-secondary)] whitespace-nowrap">
                     미래인재반({student.grade}학년) 평균
                   </th>
-                  <th className="py-2.5 px-2 text-stone-800 whitespace-nowrap">
+                  <th className="py-2.5 px-2 text-[var(--ink)] whitespace-nowrap">
                     미래인재반 대비 우위
                   </th>
                   <th className="py-2.5 px-2.5 text-left whitespace-nowrap">대입 전형 활용도</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-200 font-medium text-stone-800 whitespace-nowrap">
+              <tbody className="divide-y divide-[var(--border)] font-medium text-[var(--ink)] whitespace-nowrap">
                 {studentCombinations.map((comb) => {
                   const cohortMatch = cohortAvgByGroup.find((c) => c.key === comb.key);
                   const cohortAvg5 = cohortMatch?.avgGpa5 ?? comb.weightedGpa5;
@@ -250,43 +250,43 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
                   return (
                     <tr
                       key={comb.key}
-                      className="hover:bg-stone-50/80 transition-colors whitespace-nowrap"
+                      className="hover:bg-[var(--surface-alt)]/80 transition-colors whitespace-nowrap"
                     >
                       {/* 교과군 명칭 */}
-                      <td className="py-2.5 px-2.5 text-left font-bold text-stone-900 whitespace-nowrap">
+                      <td className="py-2.5 px-2.5 text-left font-bold text-[var(--ink)] whitespace-nowrap">
                         <div className="flex items-center gap-1.5 whitespace-nowrap">
                           <span
                             className={`w-2 h-2 rounded-full shrink-0 ${
                               comb.key === 'all'
-                                ? 'bg-stone-700'
+                                ? 'bg-[var(--ink-secondary)]'
                                 : comb.key === 'korean_math_eng_soc_sci_hist'
-                                ? 'bg-blue-600'
+                                ? 'bg-[var(--korean)]'
                                 : comb.key === 'korean_math_eng_soc_hist'
-                                ? 'bg-amber-600'
-                                : 'bg-emerald-600'
+                                ? 'bg-[var(--accent)]'
+                                : 'bg-[var(--good)]'
                             }`}
                           ></span>
-                          <span className="text-stone-900 whitespace-nowrap">{comb.label}</span>
+                          <span className="text-[var(--ink)] whitespace-nowrap">{comb.label}</span>
                         </div>
                       </td>
 
                       {/* 이수단위/과목수 */}
-                      <td className="py-2.5 px-2 text-stone-600 font-mono whitespace-nowrap">
+                      <td className="py-2.5 px-2 text-[var(--ink-secondary)] font-mono whitespace-nowrap">
                         {comb.totalUnits}단위 ({comb.courseCount}과목)
                       </td>
 
                       {/* 학생 5등급제 평균 */}
-                      <td className="py-2.5 px-2 bg-blue-50/50 font-black text-blue-950 text-sm whitespace-nowrap">
+                      <td className="py-2.5 px-2 bg-[var(--korean)]/50 font-black text-[var(--korean)] text-sm whitespace-nowrap">
                         {comb.weightedGpa5}등급
                       </td>
 
                       {/* 학생 9등급제 환산 */}
-                      <td className="py-2.5 px-2 bg-amber-50/50 font-black text-amber-950 text-sm whitespace-nowrap">
+                      <td className="py-2.5 px-2 bg-[var(--accent-soft)]/50 font-black text-[var(--accent)] text-sm whitespace-nowrap">
                         {comb.weightedGpa9}등급
                       </td>
 
                       {/* 미래인재반 5등급제 평균 */}
-                      <td className="py-2.5 px-2 font-semibold text-stone-700 font-mono whitespace-nowrap">
+                      <td className="py-2.5 px-2 font-semibold text-[var(--ink-secondary)] font-mono whitespace-nowrap">
                         {cohortAvg5.toFixed(2)}등급
                       </td>
 
@@ -295,10 +295,10 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
                         <span
                           className={`inline-flex items-center whitespace-nowrap px-2.5 py-0.5 rounded-full text-xs font-bold ${
                             diff5 > 0
-                              ? 'bg-emerald-100 text-emerald-800'
+                              ? 'bg-[var(--good)]/15 text-[var(--good)]'
                               : diff5 < 0
-                              ? 'bg-rose-100 text-rose-800'
-                              : 'bg-stone-100 text-stone-700'
+                              ? 'bg-[var(--critical)]/15 text-[var(--critical)]'
+                              : 'bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                           }`}
                         >
                           {diff5 > 0 ? `+${diff5}등급 우위` : diff5 < 0 ? `${diff5}등급` : '동일'}
@@ -306,7 +306,7 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
                       </td>
 
                       {/* 전형 활용도 설명 */}
-                      <td className="py-2.5 px-2.5 text-left text-[11px] text-stone-500 whitespace-nowrap">
+                      <td className="py-2.5 px-2.5 text-left text-[11px] text-[var(--muted)] whitespace-nowrap">
                         {comb.description}
                       </td>
                     </tr>
@@ -322,23 +322,23 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
         {/* ========================================================= */}
         <div>
           <div className="flex flex-wrap items-center justify-between mb-2">
-            <h3 className="text-xs font-bold text-stone-800 flex items-center gap-1.5 uppercase tracking-wide">
-              <Award className="w-3.5 h-3.5 text-amber-500" />
+            <h3 className="text-xs font-bold text-[var(--ink)] flex items-center gap-1.5 uppercase tracking-wide">
+              <Award className="w-3.5 h-3.5 text-[var(--accent)]" />
               학년별 이수 구분 및 가중 비율 계산
             </h3>
 
             {/* Year weight ratio slider */}
-            <div className="flex items-center gap-2 text-xs text-stone-500">
+            <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
               <Sliders className="w-3.5 h-3.5" />
               <span>학년 가중비:</span>
-              <div className="inline-flex rounded-md border border-stone-200 overflow-hidden text-[11px]">
+              <div className="inline-flex rounded-md border border-[var(--border)] overflow-hidden text-[11px]">
                 <button
                   type="button"
                   onClick={() => setRatioYear1(50)}
                   className={`px-2 py-0.5 ${
                     ratioYear1 === 50
-                      ? 'bg-stone-800 text-white font-bold'
-                      : 'bg-stone-50 hover:bg-stone-100 text-stone-700'
+                      ? 'bg-[var(--ink)] text-white font-bold'
+                      : 'bg-[var(--surface-alt)] hover:bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                   }`}
                 >
                   50:50 (기본)
@@ -348,8 +348,8 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
                   onClick={() => setRatioYear1(40)}
                   className={`px-2 py-0.5 ${
                     ratioYear1 === 40
-                      ? 'bg-stone-800 text-white font-bold'
-                      : 'bg-stone-50 hover:bg-stone-100 text-stone-700'
+                      ? 'bg-[var(--ink)] text-white font-bold'
+                      : 'bg-[var(--surface-alt)] hover:bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                   }`}
                 >
                   40:60
@@ -359,8 +359,8 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
                   onClick={() => setRatioYear1(30)}
                   className={`px-2 py-0.5 ${
                     ratioYear1 === 30
-                      ? 'bg-stone-800 text-white font-bold'
-                      : 'bg-stone-50 hover:bg-stone-100 text-stone-700'
+                      ? 'bg-[var(--ink)] text-white font-bold'
+                      : 'bg-[var(--surface-alt)] hover:bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                   }`}
                 >
                   30:70
@@ -369,47 +369,47 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
             </div>
           </div>
 
-          <div className="border border-stone-200 rounded-lg overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="border border-[var(--border)] rounded-lg overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <table className="w-full text-center text-xs whitespace-nowrap">
-              <thead className="bg-stone-100 text-stone-700 font-semibold border-b border-stone-200 whitespace-nowrap">
+              <thead className="bg-[var(--surface-alt)] text-[var(--ink-secondary)] font-semibold border-b border-[var(--border)] whitespace-nowrap">
                 <tr>
                   <th className="py-2 px-3 text-left whitespace-nowrap">구분</th>
                   <th className="py-2 px-3 whitespace-nowrap">1학년 ({ratioYear1}%)</th>
                   <th className="py-2 px-3 whitespace-nowrap">2학년 ({ratioYear2}%)</th>
                   <th className="py-2 px-3 whitespace-nowrap">전학년 (단순합산)</th>
-                  <th className="py-2 px-3 bg-amber-50 text-amber-900 font-bold whitespace-nowrap">
+                  <th className="py-2 px-3 bg-[var(--accent-soft)] text-[var(--accent)] font-bold whitespace-nowrap">
                     설정비 가중 ({ratioYear1}:{ratioYear2})
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-200 font-medium text-stone-800 whitespace-nowrap">
+              <tbody className="divide-y divide-[var(--border)] font-medium text-[var(--ink)] whitespace-nowrap">
                 {/* 5-Grade System Row */}
                 {(gradeSystemMode === '5grade' || gradeSystemMode === 'both') && (
                   <>
-                    <tr className="hover:bg-stone-50/80 whitespace-nowrap">
-                      <td className="py-2 px-3 text-left font-semibold text-stone-900 whitespace-nowrap">
-                        <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mr-1.5 shrink-0"></span>
+                    <tr className="hover:bg-[var(--surface-alt)]/80 whitespace-nowrap">
+                      <td className="py-2 px-3 text-left font-semibold text-[var(--ink)] whitespace-nowrap">
+                        <span className="inline-block w-2 h-2 rounded-full bg-[var(--korean)] mr-1.5 shrink-0"></span>
                         5등급제 단위반영(O)
                       </td>
-                      <td className="py-2 px-3 font-bold text-stone-900 whitespace-nowrap">
+                      <td className="py-2 px-3 font-bold text-[var(--ink)] whitespace-nowrap">
                         {y1Summary.weightedGpa5 > 0 ? y1Summary.weightedGpa5 : '-'}
                       </td>
-                      <td className="py-2 px-3 font-bold text-stone-900 whitespace-nowrap">
+                      <td className="py-2 px-3 font-bold text-[var(--ink)] whitespace-nowrap">
                         {y2Summary.weightedGpa5 > 0 ? y2Summary.weightedGpa5 : '-'}
                       </td>
-                      <td className="py-2 px-3 text-stone-700 whitespace-nowrap">{allSummary.weightedGpa5}</td>
-                      <td className="py-2 px-3 bg-amber-50 font-extrabold text-stone-900 text-sm whitespace-nowrap">
+                      <td className="py-2 px-3 text-[var(--ink-secondary)] whitespace-nowrap">{allSummary.weightedGpa5}</td>
+                      <td className="py-2 px-3 bg-[var(--accent-soft)] font-extrabold text-[var(--ink)] text-sm whitespace-nowrap">
                         {weightedOverall5}
                       </td>
                     </tr>
-                    <tr className="hover:bg-stone-50/80 text-stone-600 whitespace-nowrap">
-                      <td className="py-1.5 px-3 text-left pl-6 text-stone-500 whitespace-nowrap">
+                    <tr className="hover:bg-[var(--surface-alt)]/80 text-[var(--ink-secondary)] whitespace-nowrap">
+                      <td className="py-1.5 px-3 text-left pl-6 text-[var(--muted)] whitespace-nowrap">
                         └ 단위미반영(X)
                       </td>
                       <td className="py-1.5 px-3 whitespace-nowrap">{y1Summary.unweightedGpa5 || '-'}</td>
                       <td className="py-1.5 px-3 whitespace-nowrap">{y2Summary.unweightedGpa5 || '-'}</td>
                       <td className="py-1.5 px-3 whitespace-nowrap">{allSummary.unweightedGpa5}</td>
-                      <td className="py-1.5 px-3 bg-amber-50/50 text-stone-700 whitespace-nowrap">
+                      <td className="py-1.5 px-3 bg-[var(--accent-soft)]/50 text-[var(--ink-secondary)] whitespace-nowrap">
                         {y1Summary.unweightedGpa5 && y2Summary.unweightedGpa5
                           ? +(
                               (y1Summary.unweightedGpa5 * ratioYear1 +
@@ -425,30 +425,30 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
                 {/* 9-Grade Equivalent Row */}
                 {(gradeSystemMode === '9grade' || gradeSystemMode === 'both') && (
                   <>
-                    <tr className="bg-stone-50/40 hover:bg-stone-50 whitespace-nowrap">
-                      <td className="py-2 px-3 text-left font-semibold text-stone-900 whitespace-nowrap">
-                        <span className="inline-block w-2 h-2 rounded-full bg-amber-600 mr-1.5 shrink-0"></span>
+                    <tr className="bg-[var(--surface-alt)]/40 hover:bg-[var(--surface-alt)] whitespace-nowrap">
+                      <td className="py-2 px-3 text-left font-semibold text-[var(--ink)] whitespace-nowrap">
+                        <span className="inline-block w-2 h-2 rounded-full bg-[var(--accent)] mr-1.5 shrink-0"></span>
                         9등급 환산 단위반영(O)
                       </td>
-                      <td className="py-2 px-3 font-bold text-amber-900 whitespace-nowrap">
+                      <td className="py-2 px-3 font-bold text-[var(--accent)] whitespace-nowrap">
                         {y1Summary.weightedGpa9 > 0 ? y1Summary.weightedGpa9 : '-'}
                       </td>
-                      <td className="py-2 px-3 font-bold text-amber-900 whitespace-nowrap">
+                      <td className="py-2 px-3 font-bold text-[var(--accent)] whitespace-nowrap">
                         {y2Summary.weightedGpa9 > 0 ? y2Summary.weightedGpa9 : '-'}
                       </td>
-                      <td className="py-2 px-3 text-stone-700 whitespace-nowrap">{allSummary.weightedGpa9}</td>
-                      <td className="py-2 px-3 bg-amber-100/70 font-extrabold text-amber-950 text-sm whitespace-nowrap">
+                      <td className="py-2 px-3 text-[var(--ink-secondary)] whitespace-nowrap">{allSummary.weightedGpa9}</td>
+                      <td className="py-2 px-3 bg-[var(--accent-soft)]/70 font-extrabold text-[var(--accent)] text-sm whitespace-nowrap">
                         {weightedOverall9}
                       </td>
                     </tr>
-                    <tr className="hover:bg-stone-50/80 text-stone-500 whitespace-nowrap">
+                    <tr className="hover:bg-[var(--surface-alt)]/80 text-[var(--muted)] whitespace-nowrap">
                       <td className="py-1.5 px-3 text-left pl-6 whitespace-nowrap">
                         └ 9등급 단위미반영(X)
                       </td>
                       <td className="py-1.5 px-3 whitespace-nowrap">{y1Summary.unweightedGpa9 || '-'}</td>
                       <td className="py-1.5 px-3 whitespace-nowrap">{y2Summary.unweightedGpa9 || '-'}</td>
                       <td className="py-1.5 px-3 whitespace-nowrap">{allSummary.unweightedGpa9}</td>
-                      <td className="py-1.5 px-3 bg-amber-50/50 whitespace-nowrap">
+                      <td className="py-1.5 px-3 bg-[var(--accent-soft)]/50 whitespace-nowrap">
                         {y1Summary.unweightedGpa9 && y2Summary.unweightedGpa9
                           ? +(
                               (y1Summary.unweightedGpa9 * ratioYear1 +
@@ -467,45 +467,45 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
 
         {/* Highlight Insights Bar */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
-          <div className="p-3 rounded-lg bg-stone-50 border border-stone-200">
-            <div className="text-[11px] font-semibold text-stone-500 uppercase flex items-center gap-1">
-              <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+          <div className="p-3 rounded-lg bg-[var(--surface-alt)] border border-[var(--border)]">
+            <div className="text-[11px] font-semibold text-[var(--muted)] uppercase flex items-center gap-1">
+              <BookOpen className="w-3.5 h-3.5 text-[var(--korean)]" />
               성취도 A 비율
             </div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-bold text-stone-900">{aPercent}%</span>
-              <span className="text-xs text-stone-500">
+              <span className="text-xl font-bold text-[var(--ink)]">{aPercent}%</span>
+              <span className="text-xs text-[var(--muted)]">
                 ({aCount}/{student.records.length} 과목)
               </span>
             </div>
-            <div className="w-full bg-stone-200 h-1.5 rounded-full mt-2 overflow-hidden">
+            <div className="w-full bg-[var(--border)] h-1.5 rounded-full mt-2 overflow-hidden">
               <div
-                className="bg-blue-600 h-full rounded-full transition-all"
+                className="bg-[var(--korean)] h-full rounded-full transition-all"
                 style={{ width: `${aPercent}%` }}
               ></div>
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-stone-50 border border-stone-200">
-            <div className="text-[11px] font-semibold text-stone-500 uppercase flex items-center gap-1">
-              <FileCheck className="w-3.5 h-3.5 text-amber-600" />
+          <div className="p-3 rounded-lg bg-[var(--surface-alt)] border border-[var(--border)]">
+            <div className="text-[11px] font-semibold text-[var(--muted)] uppercase flex items-center gap-1">
+              <FileCheck className="w-3.5 h-3.5 text-[var(--accent)]" />
               평균 원점수 vs 미래인재반({student.grade}학년)
             </div>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className="text-xl font-bold text-stone-900">{allSummary.avgRawScore}점</span>
-              <span className="text-xs font-semibold text-stone-500">
+              <span className="text-xl font-bold text-[var(--ink)]">{allSummary.avgRawScore}점</span>
+              <span className="text-xs font-semibold text-[var(--muted)]">
                 (미래인재반 평균 {cohortAvgByGroup[0]?.avgRaw ?? 88.5}점)
               </span>
             </div>
-            <p className="text-[11px] text-stone-500 mt-1">
+            <p className="text-[11px] text-[var(--muted)] mt-1">
               {allSummary.avgRawScore >= (cohortAvgByGroup[0]?.avgRaw ?? 88.5) ? (
-                <span className="text-emerald-700 font-bold">
+                <span className="text-[var(--good)] font-bold">
                   미래인재반 평균 대비 +
                   {(allSummary.avgRawScore - (cohortAvgByGroup[0]?.avgRaw ?? 88.5)).toFixed(1)}점
                   우위
                 </span>
               ) : (
-                <span className="text-stone-600">
+                <span className="text-[var(--ink-secondary)]">
                   미래인재반 평균 대비{' '}
                   {(allSummary.avgRawScore - (cohortAvgByGroup[0]?.avgRaw ?? 88.5)).toFixed(1)}점
                 </span>
@@ -513,12 +513,12 @@ export const StudentSummaryCard: React.FC<StudentSummaryCardProps> = ({
             </p>
           </div>
 
-          <div className="p-3 rounded-lg bg-stone-50 border border-stone-200">
-            <div className="text-[11px] font-semibold text-stone-500 uppercase flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="p-3 rounded-lg bg-[var(--surface-alt)] border border-[var(--border)]">
+            <div className="text-[11px] font-semibold text-[var(--muted)] uppercase flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5 text-[var(--good)]" />
               미래인재반 종합 평가
             </div>
-            <p className="text-xs font-medium text-stone-800 mt-1 line-clamp-2">
+            <p className="text-xs font-medium text-[var(--ink)] mt-1 line-clamp-2">
               {student.memo || trajectory.description}
             </p>
           </div>

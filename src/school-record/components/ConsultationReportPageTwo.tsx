@@ -35,33 +35,33 @@ const SUBJECT_CONFIG: Record<
 > = {
   국어: {
     name: '국어',
-    stroke: '#e11d48', // Vibrant Rose Red
-    fill: '#e11d48',
-    bg: 'bg-rose-50',
-    text: 'text-rose-700',
-    border: 'border-rose-300',
+    stroke: 'var(--korean)',
+    fill: 'var(--korean)',
+    bg: 'bg-[var(--korean)]/10',
+    text: 'text-[var(--korean)]',
+    border: 'border-[var(--korean)]/30',
     strokeWidth: 2.6,
     symbol: '●',
     offsetY: -3,
   },
   수학: {
     name: '수학',
-    stroke: '#1d4ed8', // Royal Blue (High Visibility)
-    fill: '#1d4ed8',
-    bg: 'bg-blue-50',
-    text: 'text-blue-700',
-    border: 'border-blue-300',
+    stroke: 'var(--math)',
+    fill: 'var(--math)',
+    bg: 'bg-[var(--math)]/10',
+    text: 'text-[var(--math)]',
+    border: 'border-[var(--math)]/30',
     strokeWidth: 3.0,
     symbol: '■',
     offsetY: -1.5,
   },
   영어: {
     name: '영어',
-    stroke: '#059669', // Emerald Green
-    fill: '#059669',
-    bg: 'bg-emerald-50',
-    text: 'text-emerald-700',
-    border: 'border-emerald-300',
+    stroke: 'var(--english)',
+    fill: 'var(--english)',
+    bg: 'bg-[var(--english)]/10',
+    text: 'text-[var(--english)]',
+    border: 'border-[var(--english)]/30',
     strokeWidth: 2.2,
     strokeDasharray: '4 2',
     symbol: '◆',
@@ -69,11 +69,11 @@ const SUBJECT_CONFIG: Record<
   },
   사회: {
     name: '사회',
-    stroke: '#d97706', // Amber Orange
-    fill: '#d97706',
-    bg: 'bg-amber-50',
-    text: 'text-amber-700',
-    border: 'border-amber-300',
+    stroke: 'var(--elective1)',
+    fill: 'var(--elective1)',
+    bg: 'bg-[var(--elective1)]/10',
+    text: 'text-[var(--elective1)]',
+    border: 'border-[var(--elective1)]/30',
     strokeWidth: 2.2,
     strokeDasharray: '6 2 2 2',
     symbol: '▲',
@@ -81,11 +81,11 @@ const SUBJECT_CONFIG: Record<
   },
   과학: {
     name: '과학',
-    stroke: '#7c3aed', // Purple Violet
-    fill: '#7c3aed',
-    bg: 'bg-purple-50',
-    text: 'text-purple-700',
-    border: 'border-purple-300',
+    stroke: 'var(--elective2)',
+    fill: 'var(--elective2)',
+    bg: 'bg-[var(--elective2)]/10',
+    text: 'text-[var(--elective2)]',
+    border: 'border-[var(--elective2)]/30',
     strokeWidth: 2.2,
     strokeDasharray: '2 2',
     symbol: '★',
@@ -287,7 +287,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
             cy={cy}
             r="3.5"
             fill={color}
-            stroke="#ffffff"
+            stroke="var(--surface)"
             strokeWidth="1.6"
           />
         );
@@ -299,7 +299,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
             width="7"
             height="7"
             fill={color}
-            stroke="#ffffff"
+            stroke="var(--surface)"
             strokeWidth="1.6"
           />
         );
@@ -308,7 +308,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
           <polygon
             points={`${cx},${cy - 4} ${cx + 4},${cy} ${cx},${cy + 4} ${cx - 4},${cy}`}
             fill={color}
-            stroke="#ffffff"
+            stroke="var(--surface)"
             strokeWidth="1.6"
           />
         );
@@ -317,7 +317,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
           <polygon
             points={`${cx},${cy - 4} ${cx + 4},${cy + 3.5} ${cx - 4},${cy + 3.5}`}
             fill={color}
-            stroke="#ffffff"
+            stroke="var(--surface)"
             strokeWidth="1.6"
           />
         );
@@ -326,7 +326,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
           <polygon
             points={`${cx},${cy - 4} ${cx + 3.5},${cy - 2} ${cx + 3.5},${cy + 2} ${cx},${cy + 4} ${cx - 3.5},${cy + 2} ${cx - 3.5},${cy - 2}`}
             fill={color}
-            stroke="#ffffff"
+            stroke="var(--surface)"
             strokeWidth="1.6"
           />
         );
@@ -337,25 +337,25 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
   const renderSemesterCard = (
     title: string,
     records: CourseRecord[],
-    badgeColor = 'bg-stone-900 text-white'
+    badgeColor = 'bg-[var(--ink)] text-white'
   ) => {
     const stats = getSemStats(records);
 
     return (
-      <div className="flex flex-col border border-stone-300 rounded-md overflow-hidden bg-white shadow-2xs h-full">
+      <div className="flex flex-col border border-[var(--border-strong)] rounded-md overflow-hidden bg-[var(--surface)] shadow-2xs h-full">
         {/* Semester Header */}
-        <div className="bg-stone-100/90 px-2.5 py-1.5 border-b border-stone-300 flex items-center justify-between text-[10px]">
+        <div className="bg-[var(--surface-alt)]/90 px-2.5 py-1.5 border-b border-[var(--border-strong)] flex items-center justify-between text-[10px]">
           <div className="flex items-center gap-1.5">
             <span className={`px-1.5 py-0.5 rounded font-black text-[9px] font-mono ${badgeColor}`}>
               {title}
             </span>
-            <span className="font-bold text-stone-800">
+            <span className="font-bold text-[var(--ink)]">
               {stats.count}과목 · {stats.units}단위
             </span>
           </div>
           <div className="flex items-center gap-1 text-[9.5px] font-mono">
-            <span className="text-stone-500 font-sans">학기평균:</span>
-            <span className="font-black text-blue-700">{stats.gpa5}등급</span>
+            <span className="text-[var(--muted)] font-sans">학기평균:</span>
+            <span className="font-black text-[var(--korean)]">{stats.gpa5}등급</span>
           </div>
         </div>
 
@@ -372,17 +372,17 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
               <col style={{ width: '21%' }} />
             </colgroup>
             <thead>
-              <tr className="bg-stone-50 border-b border-stone-300 text-[9px] font-black text-stone-700 whitespace-nowrap">
-                <th className="py-1.5 px-1 border-r border-stone-200">교과</th>
-                <th className="py-1.5 px-1.5 text-left border-r border-stone-200">과목명</th>
-                <th className="py-1.5 px-0.5 border-r border-stone-200">단위</th>
-                <th className="py-1.5 px-0.5 border-r border-stone-200">원점수/평균</th>
-                <th className="py-1.5 px-0.5 border-r border-stone-200">수강자</th>
-                <th className="py-1.5 px-0.5 border-r border-stone-200">성취</th>
-                <th className="py-1.5 px-1 bg-blue-50/70 text-blue-950">5등급(9환산)</th>
+              <tr className="bg-[var(--surface-alt)] border-b border-[var(--border-strong)] text-[9px] font-black text-[var(--ink-secondary)] whitespace-nowrap">
+                <th className="py-1.5 px-1 border-r border-[var(--border)]">교과</th>
+                <th className="py-1.5 px-1.5 text-left border-r border-[var(--border)]">과목명</th>
+                <th className="py-1.5 px-0.5 border-r border-[var(--border)]">단위</th>
+                <th className="py-1.5 px-0.5 border-r border-[var(--border)]">원점수/평균</th>
+                <th className="py-1.5 px-0.5 border-r border-[var(--border)]">수강자</th>
+                <th className="py-1.5 px-0.5 border-r border-[var(--border)]">성취</th>
+                <th className="py-1.5 px-1 bg-[var(--korean)]/70 text-[var(--korean)]">5등급(9환산)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-200 text-[9px]">
+            <tbody className="divide-y divide-[var(--border)] text-[9px]">
               {records.length > 0 ? (
                 records.map((r, idx) => {
                   const conv =
@@ -394,72 +394,72 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                   return (
                     <tr
                       key={r.id || `${title}-${idx}`}
-                      className={`hover:bg-stone-100/60 transition-colors ${
-                        idx % 2 === 1 ? 'bg-stone-50/40' : 'bg-white'
+                      className={`hover:bg-[var(--surface-alt)]/60 transition-colors ${
+                        idx % 2 === 1 ? 'bg-[var(--surface-alt)]/40' : 'bg-[var(--surface)]'
                       }`}
                     >
-                      <td className="py-1.5 px-1 font-medium text-stone-700 border-r border-stone-200 truncate whitespace-nowrap">
+                      <td className="py-1.5 px-1 font-medium text-[var(--ink-secondary)] border-r border-[var(--border)] truncate whitespace-nowrap">
                         {r.category}
                       </td>
                       <td
-                        className="py-1.5 px-1.5 text-left font-bold text-stone-950 border-r border-stone-200 truncate whitespace-nowrap"
+                        className="py-1.5 px-1.5 text-left font-bold text-[var(--ink)] border-r border-[var(--border)] truncate whitespace-nowrap"
                         title={r.subjectName}
                       >
                         {r.subjectName}
                       </td>
-                      <td className="py-1.5 px-0.5 font-mono text-stone-700 border-r border-stone-200 whitespace-nowrap">
+                      <td className="py-1.5 px-0.5 font-mono text-[var(--ink-secondary)] border-r border-[var(--border)] whitespace-nowrap">
                         {r.units}
                       </td>
-                      <td className="py-1.5 px-0.5 font-mono border-r border-stone-200 text-stone-800 whitespace-nowrap">
-                        <span className="font-bold text-blue-950">{r.rawScore ?? '-'}</span>
+                      <td className="py-1.5 px-0.5 font-mono border-r border-[var(--border)] text-[var(--ink)] whitespace-nowrap">
+                        <span className="font-bold text-[var(--korean)]">{r.rawScore ?? '-'}</span>
                         {typeof r.subjectMean === 'number' && (
-                          <span className="text-[7.5px] text-stone-400">/{r.subjectMean}</span>
+                          <span className="text-[7.5px] text-[var(--muted)]">/{r.subjectMean}</span>
                         )}
                       </td>
-                      <td className="py-1.5 px-0.5 font-mono border-r border-stone-200 text-stone-700 whitespace-nowrap">
+                      <td className="py-1.5 px-0.5 font-mono border-r border-[var(--border)] text-[var(--ink-secondary)] whitespace-nowrap">
                         {typeof r.studentCount === 'number' ? (
                           <span>
                             {r.studentCount}
-                            <span className="text-[7.5px] text-stone-400 ml-0.2">명</span>
+                            <span className="text-[7.5px] text-[var(--muted)] ml-0.2">명</span>
                           </span>
                         ) : (
-                          <span className="text-stone-400">-</span>
+                          <span className="text-[var(--muted)]">-</span>
                         )}
                       </td>
-                      <td className="py-1.5 px-0.5 font-bold border-r border-stone-200 whitespace-nowrap">
+                      <td className="py-1.5 px-0.5 font-bold border-r border-[var(--border)] whitespace-nowrap">
                         <span
                           className={`inline-block px-1 rounded-xs text-[8px] whitespace-nowrap ${
                             r.achievement === 'A'
-                              ? 'bg-emerald-50 text-emerald-700 font-black'
+                              ? 'bg-[var(--good)]/10 text-[var(--good)] font-black'
                               : r.achievement === 'B'
-                              ? 'bg-blue-50 text-blue-700'
-                              : 'bg-stone-100 text-stone-700'
+                              ? 'bg-[var(--korean)]/10 text-[var(--korean)]'
+                              : 'bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                           }`}
                         >
                           {r.achievement || '-'}
                         </span>
                       </td>
                       {/* USER REQUIREMENT: 1등급을 한 줄에 (줄 바꿈 X) */}
-                      <td className="py-1.5 px-1 font-mono font-bold bg-blue-50/20 text-center whitespace-nowrap">
+                      <td className="py-1.5 px-1 font-mono font-bold bg-[var(--korean)]/20 text-center whitespace-nowrap">
                         {typeof r.rankGrade5 === 'number' ? (
                           <div className="inline-flex items-center justify-center gap-0.5 whitespace-nowrap">
                             <span
                               className={`whitespace-nowrap inline-flex items-center justify-center px-1.5 py-0.5 rounded text-[8.5px] font-black shrink-0 ${
                                 isGradeOne
-                                  ? 'bg-blue-600 text-white'
-                                  : 'bg-stone-200 text-stone-900'
+                                  ? 'bg-[var(--korean)] text-white'
+                                  : 'bg-[var(--border)] text-[var(--ink)]'
                               }`}
                             >
                               {r.rankGrade5}등급
                             </span>
                             {conv && (
-                              <span className="text-[7.5px] text-amber-800 font-medium whitespace-nowrap shrink-0">
+                              <span className="text-[7.5px] text-[var(--accent)] font-medium whitespace-nowrap shrink-0">
                                 ({conv.grade9Equivalent})
                               </span>
                             )}
                           </div>
                         ) : (
-                          <span className="text-stone-400 whitespace-nowrap">-</span>
+                          <span className="text-[var(--muted)] whitespace-nowrap">-</span>
                         )}
                       </td>
                     </tr>
@@ -467,7 +467,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                 })
               ) : (
                 <tr>
-                  <td colSpan={7} className="py-6 text-center text-stone-400 text-[9.5px]">
+                  <td colSpan={7} className="py-6 text-center text-[var(--muted)] text-[9.5px]">
                     이수 내역 없음
                   </td>
                 </tr>
@@ -481,25 +481,25 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
 
   // Render the empty placeholder for 2학년 2학기 with matched height
   const renderEmptySemesterCard = (title: string) => (
-    <div className="flex flex-col border border-dashed border-stone-300 rounded-md bg-stone-50/50 p-2.5 justify-between items-center text-center h-full min-h-[220px]">
-      <div className="w-full flex items-center justify-between pb-1.5 border-b border-dashed border-stone-300 text-stone-600 font-bold text-[10px]">
-        <span className="px-1.5 py-0.5 rounded bg-stone-200 text-stone-700 font-mono font-bold">
+    <div className="flex flex-col border border-dashed border-[var(--border-strong)] rounded-md bg-[var(--surface-alt)]/50 p-2.5 justify-between items-center text-center h-full min-h-[220px]">
+      <div className="w-full flex items-center justify-between pb-1.5 border-b border-dashed border-[var(--border-strong)] text-[var(--ink-secondary)] font-bold text-[10px]">
+        <span className="px-1.5 py-0.5 rounded bg-[var(--border)] text-[var(--ink-secondary)] font-mono font-bold">
           {title}
         </span>
-        <span className="text-[9px] text-stone-400 font-mono font-bold">이수 예정 (공란)</span>
+        <span className="text-[9px] text-[var(--muted)] font-mono font-bold">이수 예정 (공란)</span>
       </div>
-      <div className="flex-1 flex flex-col items-center justify-center py-8 text-stone-400">
-        <div className="w-10 h-10 rounded-full border border-stone-300 flex items-center justify-center mb-2 text-stone-300 font-serif text-sm">
+      <div className="flex-1 flex flex-col items-center justify-center py-8 text-[var(--muted)]">
+        <div className="w-10 h-10 rounded-full border border-[var(--border-strong)] flex items-center justify-center mb-2 text-[var(--muted)] font-serif text-sm">
           숭신
         </div>
-        <span className="font-bold text-[11px] text-stone-600">
+        <span className="font-bold text-[11px] text-[var(--ink-secondary)]">
           2학년 2학기 교육과정 미편제
         </span>
-        <span className="text-[9px] text-stone-400 mt-1 max-w-[200px] leading-relaxed">
+        <span className="text-[9px] text-[var(--muted)] mt-1 max-w-[200px] leading-relaxed">
           차기 학기 개설 및 이수 후 내신 성적 반영 예정 (현재 공란)
         </span>
       </div>
-      <div className="w-full pt-1.5 border-t border-dashed border-stone-200 text-[8px] text-stone-400 font-mono text-center">
+      <div className="w-full pt-1.5 border-t border-dashed border-[var(--border)] text-[8px] text-[var(--muted)] font-mono text-center">
         SUGSHIN HIGH SCHOOL ACADEMIC RECORDS
       </div>
     </div>
@@ -508,56 +508,56 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
   return (
     <div
       id="consultation-report-sheet-p2"
-      className="consultation-report-page text-stone-900 bg-white font-sans text-xs leading-normal w-full max-w-[210mm] min-h-[297mm] p-3 sm:p-5 md:p-[7mm] lg:p-[9mm] mx-auto box-border flex flex-col justify-between gap-2.5 select-text print:m-0 print:p-0 print:border-none print:shadow-none"
+      className="consultation-report-page text-[var(--ink)] bg-[var(--surface)] font-sans text-xs leading-normal w-full max-w-[210mm] min-h-[297mm] p-3 sm:p-5 md:p-[7mm] lg:p-[9mm] mx-auto box-border flex flex-col justify-between gap-2.5 select-text print:m-0 print:p-0 print:border-none print:shadow-none"
     >
       {/* Page 2 Header */}
-      <div className="border-b-2 border-stone-900 pb-2">
+      <div className="border-b-2 border-[var(--border-strong)] pb-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-blue-900 text-white flex items-center justify-center font-serif font-black text-xs shrink-0">
+            <div className="w-6 h-6 rounded bg-[var(--ink)] text-white flex items-center justify-center font-serif font-black text-xs shrink-0">
               숭
             </div>
             <div>
-              <span className="text-[10.5px] tracking-wider text-blue-900 font-bold block">
+              <span className="text-[10.5px] tracking-wider text-[var(--korean)] font-bold block">
                 숭신고등학교 진로진학상담부 (미래인재반)
               </span>
-              <h1 className="text-lg font-black tracking-tight text-stone-950 font-serif leading-tight">
+              <h1 className="text-lg font-black tracking-tight text-[var(--ink)] font-serif leading-tight">
                 2028 대입 개편 5등급제 심층 분석 리포트
               </h1>
             </div>
           </div>
           <div className="text-right">
-            <span className="inline-block px-2 py-0.5 rounded bg-stone-900 text-white text-[10px] font-black font-mono">
+            <span className="inline-block px-2 py-0.5 rounded bg-[var(--ink)] text-white text-[10px] font-black font-mono">
               [ 2 / 2 페이지 ]
             </span>
           </div>
         </div>
 
         {/* Student Quick Info Strip */}
-        <div className="mt-2 grid grid-cols-5 gap-1.5 bg-stone-100 p-1.5 rounded border border-stone-300 text-center font-mono text-[10px]">
+        <div className="mt-2 grid grid-cols-5 gap-1.5 bg-[var(--surface-alt)] p-1.5 rounded border border-[var(--border-strong)] text-center font-mono text-[10px]">
           <div>
-            <span className="text-stone-500 font-sans block text-[8.5px]">학생 성명</span>
-            <span className="font-bold text-stone-950 font-sans">{student.name}</span>
+            <span className="text-[var(--muted)] font-sans block text-[8.5px]">학생 성명</span>
+            <span className="font-bold text-[var(--ink)] font-sans">{student.name}</span>
           </div>
           <div>
-            <span className="text-stone-500 font-sans block text-[8.5px]">학번</span>
-            <span className="font-bold text-stone-900 font-sans whitespace-nowrap">
+            <span className="text-[var(--muted)] font-sans block text-[8.5px]">학번</span>
+            <span className="font-bold text-[var(--ink)] font-sans whitespace-nowrap">
               {student.grade}학년 {student.classNum}반 {student.studentNum}번
             </span>
           </div>
           <div>
-            <span className="text-stone-500 font-sans block text-[8.5px]">과정</span>
-            <span className="font-bold text-stone-900 font-sans truncate block" title={student.track}>
+            <span className="text-[var(--muted)] font-sans block text-[8.5px]">과정</span>
+            <span className="font-bold text-[var(--ink)] font-sans truncate block" title={student.track}>
               {student.track}
             </span>
           </div>
           <div>
-            <span className="text-stone-500 font-sans block text-[8.5px]">전과목 5등급제</span>
-            <span className="font-black text-blue-700">{allSummary.weightedGpa5}등급</span>
+            <span className="text-[var(--muted)] font-sans block text-[8.5px]">전과목 5등급제</span>
+            <span className="font-black text-[var(--korean)]">{allSummary.weightedGpa5}등급</span>
           </div>
           <div>
-            <span className="text-stone-500 font-sans block text-[8.5px]">9등급 환산</span>
-            <span className="font-black text-amber-700">약 {allSummary.weightedGpa9}등급</span>
+            <span className="text-[var(--muted)] font-sans block text-[8.5px]">9등급 환산</span>
+            <span className="font-black text-[var(--accent)]">약 {allSummary.weightedGpa9}등급</span>
           </div>
         </div>
       </div>
@@ -565,19 +565,19 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
       {/* 2 Side-by-Side Trend Graphs */}
       <div className="grid grid-cols-2 gap-3 items-stretch">
         {/* Graph 1: 학기별 전과목 성적 변화 추이 (5등급제) */}
-        <div className="flex flex-col space-y-1 p-2 rounded border border-stone-300 bg-stone-50/70">
+        <div className="flex flex-col space-y-1 p-2 rounded border border-[var(--border-strong)] bg-[var(--surface-alt)]/70">
           <div className="flex items-center justify-between">
-            <h2 className="font-black text-stone-950 flex items-center gap-1.5 text-[11px] border-l-3 border-blue-700 pl-1.5">
-              <TrendingUp className="w-3.5 h-3.5 text-blue-700" />
+            <h2 className="font-black text-[var(--ink)] flex items-center gap-1.5 text-[11px] border-l-3 border-[var(--korean)]/40 pl-1.5">
+              <TrendingUp className="w-3.5 h-3.5 text-[var(--korean)]" />
               <span>5. 학기별 전과목 5등급제 성적 변화 추이</span>
             </h2>
-            <span className="text-[8.5px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded border border-blue-200">
+            <span className="text-[8.5px] font-bold text-[var(--korean)] bg-[var(--korean)]/10 px-1.5 py-0.2 rounded border border-[var(--korean)]/25">
               {trajectory.trend}
             </span>
           </div>
 
           {/* SVG Line Chart 1 */}
-          <div className="bg-white rounded border border-stone-200 p-2 flex flex-col items-center justify-center">
+          <div className="bg-[var(--surface)] rounded border border-[var(--border)] p-2 flex flex-col items-center justify-center">
             <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} className="w-full h-auto select-none overflow-visible">
               {/* USER REQUIREMENT: 1등급이 아래고 3등급이 위: 3.0 at top, 1.0 at bottom */}
               {[3.0, 2.5, 2.0, 1.5, 1.0].map((g) => {
@@ -589,7 +589,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                       y1={y}
                       x2={chartWidth - padRight}
                       y2={y}
-                      stroke={g === 1.0 ? '#64748b' : '#e2e8f0'}
+                      stroke={g === 1.0 ? 'var(--border-strong)' : 'var(--border)'}
                       strokeWidth={g === 1.0 ? '1' : '0.6'}
                       strokeDasharray={g === 1.0 ? 'none' : '2 2'}
                     />
@@ -598,7 +598,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                       y={y + 3}
                       textAnchor="end"
                       className="font-mono text-[7.5px] font-bold"
-                      fill="#64748b"
+                      fill="var(--muted)"
                     >
                       {g.toFixed(1)}
                     </text>
@@ -609,8 +609,8 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
               {/* Area gradient for student line */}
               <defs>
                 <linearGradient id="studentGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#2563eb" stopOpacity="0.18" />
-                  <stop offset="100%" stopColor="#2563eb" stopOpacity="0.02" />
+                  <stop offset="0%" stopColor="var(--korean)" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="var(--korean)" stopOpacity="0.02" />
                 </linearGradient>
               </defs>
 
@@ -631,7 +631,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                 <polyline
                   points={cohortOverallPoints.map((p) => `${p.x},${p.y}`).join(' ')}
                   fill="none"
-                  stroke="#d97706"
+                  stroke="var(--accent)"
                   strokeWidth="1.8"
                   strokeDasharray="4 3"
                 />
@@ -642,7 +642,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                 <polyline
                   points={studentOverallPoints.map((p) => `${p.x},${p.y}`).join(' ')}
                   fill="none"
-                  stroke="#2563eb"
+                  stroke="var(--korean)"
                   strokeWidth="2.4"
                 />
               )}
@@ -654,8 +654,8 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                   cx={p.x}
                   cy={p.y}
                   r="2.5"
-                  fill="#ffffff"
-                  stroke="#d97706"
+                  fill="var(--surface)"
+                  stroke="var(--accent)"
                   strokeWidth="1.5"
                 />
               ))}
@@ -667,8 +667,8 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                     cx={p.x}
                     cy={p.y}
                     r="3.5"
-                    fill="#2563eb"
-                    stroke="#ffffff"
+                    fill="var(--korean)"
+                    stroke="var(--surface)"
                     strokeWidth="1.8"
                   />
                   <rect
@@ -677,14 +677,14 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                     width="28"
                     height="10"
                     rx="3"
-                    fill="#1e3a8a"
+                    fill="var(--korean)"
                   />
                   <text
                     x={p.x}
                     y={p.y - 7}
                     textAnchor="middle"
                     className="font-mono text-[7px] font-black"
-                    fill="#ffffff"
+                    fill="white"
                   >
                     {p.gpa.toFixed(2)}
                   </text>
@@ -701,7 +701,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                     y={chartHeight - 4}
                     textAnchor="middle"
                     className="font-mono text-[8.5px] font-bold"
-                    fill="#0f172a"
+                    fill="var(--ink)"
                   >
                     {sem}
                   </text>
@@ -710,18 +710,18 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
             </svg>
 
             {/* Chart 1 Legend */}
-            <div className="flex items-center justify-between w-full mt-1.5 pt-1.5 border-t border-stone-200 text-[8.5px]">
+            <div className="flex items-center justify-between w-full mt-1.5 pt-1.5 border-t border-[var(--border)] text-[8.5px]">
               <div className="flex items-center gap-2 font-bold">
-                <span className="flex items-center gap-1 text-blue-900">
-                  <span className="w-2.5 h-1 bg-blue-600 rounded-xs" />
+                <span className="flex items-center gap-1 text-[var(--korean)]">
+                  <span className="w-2.5 h-1 bg-[var(--korean)] rounded-xs" />
                   {student.name}
                 </span>
-                <span className="flex items-center gap-1 text-amber-900">
-                  <span className="w-2.5 h-0.5 border-t-2 border-dashed border-amber-600" />
+                <span className="flex items-center gap-1 text-[var(--accent)]">
+                  <span className="w-2.5 h-0.5 border-t-2 border-dashed border-[var(--accent)]/40" />
                   미인반평균
                 </span>
               </div>
-              <span className="text-stone-500 font-medium text-[8px]">
+              <span className="text-[var(--muted)] font-medium text-[8px]">
                 * 1.0등급(하단) ~ 3.0등급(상단) 기준
               </span>
             </div>
@@ -729,29 +729,29 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
         </div>
 
         {/* Graph 2: 주요 5대 교과별 학기별 성적 추이 그래프 */}
-        <div className="flex flex-col space-y-1 p-2 rounded border border-stone-300 bg-stone-50/70">
+        <div className="flex flex-col space-y-1 p-2 rounded border border-[var(--border-strong)] bg-[var(--surface-alt)]/70">
           <div className="flex items-center justify-between">
-            <h2 className="font-black text-stone-950 flex items-center gap-1.5 text-[11px] border-l-3 border-blue-700 pl-1.5">
-              <BarChart3 className="w-3.5 h-3.5 text-blue-700" />
+            <h2 className="font-black text-[var(--ink)] flex items-center gap-1.5 text-[11px] border-l-3 border-[var(--korean)]/40 pl-1.5">
+              <BarChart3 className="w-3.5 h-3.5 text-[var(--korean)]" />
               <span>6. 주요 5대 교과별 학기별 성적 추이 (5등급제)</span>
             </h2>
             <div className="flex items-center gap-1.5">
               {highlightedSubject && (
                 <button
                   onClick={() => setHighlightedSubject(null)}
-                  className="text-[8px] text-blue-700 underline font-bold"
+                  className="text-[8px] text-[var(--korean)] underline font-bold"
                 >
                   전체보기
                 </button>
               )}
-              <span className="text-[8.5px] font-bold text-stone-600">
+              <span className="text-[8.5px] font-bold text-[var(--ink-secondary)]">
                 국 · 수 · 영 · 사 · 과
               </span>
             </div>
           </div>
 
           {/* SVG Multi-line Chart 2 */}
-          <div className="bg-white rounded border border-stone-200 p-2 flex flex-col items-center justify-center">
+          <div className="bg-[var(--surface)] rounded border border-[var(--border)] p-2 flex flex-col items-center justify-center">
             <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} className="w-full h-auto select-none overflow-visible">
               {/* USER REQUIREMENT: 1등급이 아래고 3등급이 위: 3.0 at top, 1.0 at bottom */}
               {[3.0, 2.5, 2.0, 1.5, 1.0].map((g) => {
@@ -763,7 +763,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                       y1={y}
                       x2={chartWidth - padRight}
                       y2={y}
-                      stroke={g === 1.0 ? '#64748b' : '#e2e8f0'}
+                      stroke={g === 1.0 ? 'var(--border-strong)' : 'var(--border)'}
                       strokeWidth={g === 1.0 ? '1' : '0.6'}
                       strokeDasharray={g === 1.0 ? 'none' : '2 2'}
                     />
@@ -772,7 +772,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                       y={y + 3}
                       textAnchor="end"
                       className="font-mono text-[7.5px] font-bold"
-                      fill="#64748b"
+                      fill="var(--muted)"
                     >
                       {g.toFixed(1)}
                     </text>
@@ -790,7 +790,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                     y={chartHeight - 4}
                     textAnchor="middle"
                     className="font-mono text-[8.5px] font-bold"
-                    fill="#0f172a"
+                    fill="var(--ink)"
                   >
                     {sem}
                   </text>
@@ -844,7 +844,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
             </svg>
 
             {/* 5 Subject Chips Legend with Marker Symbols & Click-to-Focus */}
-            <div className="grid grid-cols-5 gap-1 w-full mt-1.5 pt-1.5 border-t border-stone-200">
+            <div className="grid grid-cols-5 gap-1 w-full mt-1.5 pt-1.5 border-t border-[var(--border)]">
               {subjectOverallGpa.map((s) => {
                 const conf = SUBJECT_CONFIG[s.subject];
                 const isSelected = highlightedSubject === s.subject;
@@ -858,9 +858,9 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                     }
                     className={`flex items-center justify-between px-1.5 py-0.5 rounded border text-[8px] font-mono cursor-pointer transition-all ${
                       isSelected
-                        ? 'ring-2 ring-stone-900 shadow-xs'
+                        ? 'ring-2 ring-[var(--ink)] shadow-xs'
                         : highlightedSubject && !isSelected
-                        ? 'opacity-40 border-stone-200'
+                        ? 'opacity-40 border-[var(--border)]'
                         : `${conf.bg} ${conf.border}`
                     }`}
                     title={`${conf.name} 과목 선 강조 표시 (클릭 시 토글)`}
@@ -873,7 +873,7 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
                         {conf.name}
                       </span>
                     </span>
-                    <span className="font-black text-stone-900 ml-0.5">
+                    <span className="font-black text-[var(--ink)] ml-0.5">
                       {s.gpa5 !== null ? s.gpa5.toFixed(2) : '-'}
                     </span>
                   </button>
@@ -887,11 +887,11 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
       {/* Bottom Half: 7. 전체 과목 세부 성적 명세 - 2단 그리드 (1-1 좌, 1-2 우, 2-1 좌, 2-2 우 비워놓기) */}
       <div className="flex flex-col space-y-1.5 flex-1">
         <div className="flex items-center justify-between">
-          <h2 className="font-black text-stone-950 flex items-center gap-1.5 text-[11px] border-l-3 border-blue-700 pl-1.5 shrink-0">
-            <ListOrdered className="w-3.5 h-3.5 text-blue-700" />
+          <h2 className="font-black text-[var(--ink)] flex items-center gap-1.5 text-[11px] border-l-3 border-[var(--korean)]/40 pl-1.5 shrink-0">
+            <ListOrdered className="w-3.5 h-3.5 text-[var(--korean)]" />
             <span>7. 전체 과목 세부 성적 명세 (학생부 이수 전과목 내역)</span>
           </h2>
-          <span className="text-[9px] text-stone-500 font-bold font-mono">
+          <span className="text-[9px] text-[var(--muted)] font-bold font-mono">
             총 {student.records.length}개 과목 이수 ({allSummary.totalUnits}단위 누적)
           </span>
         </div>
@@ -902,13 +902,13 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
         */}
         <div className="grid grid-cols-2 gap-2.5">
           {/* Row 1 Left: 1학년 1학기 */}
-          {renderSemesterCard('1학년 1학기', sem11Records, 'bg-blue-900 text-white')}
+          {renderSemesterCard('1학년 1학기', sem11Records, 'bg-[var(--ink)] text-white')}
 
           {/* Row 1 Right: 1학년 2학기 */}
-          {renderSemesterCard('1학년 2학기', sem12Records, 'bg-indigo-900 text-white')}
+          {renderSemesterCard('1학년 2학기', sem12Records, 'bg-[var(--accent)] text-white')}
 
           {/* Row 2 Left: 2학년 1학기 */}
-          {renderSemesterCard('2학년 1학기', sem21Records, 'bg-teal-900 text-white')}
+          {renderSemesterCard('2학년 1학기', sem21Records, 'bg-[var(--korean)] text-white')}
 
           {/* Row 2 Right: 2학년 2학기 자리는 비워놓기 (USER REQUIREMENT) */}
           {renderEmptySemesterCard('2학년 2학기')}
@@ -916,16 +916,16 @@ export const ConsultationReportPageTwo: React.FC<ConsultationReportPageTwoProps>
       </div>
 
       {/* Page 2 Official Sign-off Footer */}
-      <div className="border-t-2 border-stone-900 pt-2 flex flex-row items-center justify-between gap-2 text-[10px] text-stone-700 font-sans shrink-0">
+      <div className="border-t-2 border-[var(--border-strong)] pt-2 flex flex-row items-center justify-between gap-2 text-[10px] text-[var(--ink-secondary)] font-sans shrink-0">
         <div className="flex items-center gap-1.5">
-          <Award className="w-3.5 h-3.5 text-blue-800 shrink-0" />
-          <span className="font-bold text-stone-900">
+          <Award className="w-3.5 h-3.5 text-[var(--korean)] shrink-0" />
+          <span className="font-bold text-[var(--ink)]">
             본 리포트는 숭신고 진로진학상담부에서 제작한 프로그램입니다.
           </span>
         </div>
-        <div className="flex items-center gap-2 text-right font-bold text-stone-950 shrink-0 whitespace-nowrap">
+        <div className="flex items-center gap-2 text-right font-bold text-[var(--ink)] shrink-0 whitespace-nowrap">
           <span>진로진학상담부 담당교사: ____________________ (인)</span>
-          <span className="font-mono text-stone-600">[ 2 / 2 ]</span>
+          <span className="font-mono text-[var(--ink-secondary)]">[ 2 / 2 ]</span>
         </div>
       </div>
     </div>

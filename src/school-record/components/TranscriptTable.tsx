@@ -54,32 +54,32 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
       : 0;
 
   return (
-    <div className="bg-white rounded-xl border border-stone-200 shadow-xs p-5" id="transcript-table-section">
+    <div className="bg-[var(--surface)] rounded-xl border border-[var(--border)] shadow-xs p-5" id="transcript-table-section">
       {/* Table Header Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-stone-100 gap-3">
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-[var(--border)] gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="text-base font-bold text-stone-900 tracking-tight flex items-center gap-2">
-              <FileSpreadsheet className="w-5 h-5 text-amber-500" />
+            <h3 className="text-base font-bold text-[var(--ink)] tracking-tight flex items-center gap-2">
+              <FileSpreadsheet className="w-5 h-5 text-[var(--accent)]" />
               개인별 점수자료 일람표 [학생부]
             </h3>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold">
+            <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--surface-alt)] text-[var(--ink-secondary)] font-semibold">
               {student.school} {student.grade}학년 {student.classNum}반 {student.name}
             </span>
           </div>
-          <p className="text-xs text-stone-500 mt-0.5">
+          <p className="text-xs text-[var(--muted)] mt-0.5">
             내신닷컴 UNIV 대입정보시스템 표준 학생부 점수자료 양식
           </p>
         </div>
 
         {/* View Statistics */}
-        <div className="flex items-center gap-3 text-xs bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-200 font-medium">
-          <span>조회 과목수: <strong className="text-stone-900">{filtered.length}개</strong></span>
+        <div className="flex items-center gap-3 text-xs bg-[var(--surface-alt)] px-3 py-1.5 rounded-lg border border-[var(--border)] font-medium">
+          <span>조회 과목수: <strong className="text-[var(--ink)]">{filtered.length}개</strong></span>
           <span>•</span>
-          <span>이수 단위합: <strong className="text-stone-900">{totalUnits}단위</strong></span>
+          <span>이수 단위합: <strong className="text-[var(--ink)]">{totalUnits}단위</strong></span>
           <span>•</span>
           <span>
-            선택 가중평균: <strong className="text-blue-700">{avgGrade5 > 0 ? `${avgGrade5}등급` : '-'}</strong>
+            선택 가중평균: <strong className="text-[var(--korean)]">{avgGrade5 > 0 ? `${avgGrade5}등급` : '-'}</strong>
           </span>
         </div>
       </div>
@@ -88,14 +88,14 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
       <div className="py-3.5 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-2">
           {/* Semester Selector */}
-          <div className="flex items-center bg-stone-100 rounded-lg p-0.5 border border-stone-200">
+          <div className="flex items-center bg-[var(--surface-alt)] rounded-lg p-0.5 border border-[var(--border)]">
             <button
               type="button"
               onClick={() => setSelectedSemester('all')}
               className={`px-2.5 py-1 rounded-md font-semibold cursor-pointer ${
                 selectedSemester === 'all'
-                  ? 'bg-white text-stone-900 shadow-2xs'
-                  : 'text-stone-600 hover:text-stone-900'
+                  ? 'bg-[var(--surface)] text-[var(--ink)] shadow-2xs'
+                  : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
               }`}
             >
               전체 학기
@@ -107,8 +107,8 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
                 onClick={() => setSelectedSemester(sem)}
                 className={`px-2.5 py-1 rounded-md font-semibold cursor-pointer ${
                   selectedSemester === sem
-                    ? 'bg-white text-stone-900 shadow-2xs'
-                    : 'text-stone-600 hover:text-stone-900'
+                    ? 'bg-[var(--surface)] text-[var(--ink)] shadow-2xs'
+                    : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
                 }`}
               >
                 {sem}학기
@@ -122,7 +122,7 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
             aria-label="교과목 필터"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="bg-stone-50 border border-stone-200 rounded-lg px-2.5 py-1.5 text-xs text-stone-800 font-medium outline-hidden"
+            className="bg-[var(--surface-alt)] border border-[var(--border)] rounded-lg px-2.5 py-1.5 text-xs text-[var(--ink)] font-medium outline-hidden"
           >
             <option value="all">전체 교과군</option>
             {categories.map((c) => (
@@ -135,22 +135,22 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
 
         {/* Search Input */}
         <div className="relative w-full sm:w-60">
-          <Search className="w-3.5 h-3.5 text-stone-400 absolute left-3 top-2.5" />
+          <Search className="w-3.5 h-3.5 text-[var(--muted)] absolute left-3 top-2.5" />
           <input
             id="transcript-search-input"
             type="text"
             placeholder="과목명 검색 (예: 화학, 대수...)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 bg-stone-50 border border-stone-200 rounded-lg text-xs text-stone-800 placeholder-stone-400 outline-hidden focus:border-stone-400 focus:bg-white transition-all"
+            className="w-full pl-8 pr-3 py-1.5 bg-[var(--surface-alt)] border border-[var(--border)] rounded-lg text-xs text-[var(--ink)] placeholder-[var(--muted)] outline-hidden focus:border-[var(--border-strong)] focus:bg-[var(--surface)] transition-all"
           />
         </div>
       </div>
 
       {/* Main Table */}
-      <div className="overflow-x-auto border border-stone-200 rounded-lg">
+      <div className="overflow-x-auto border border-[var(--border)] rounded-lg">
         <table className="w-full text-left text-xs whitespace-nowrap min-w-[950px]">
-          <thead className="bg-stone-100 text-stone-700 font-semibold border-b border-stone-200 whitespace-nowrap">
+          <thead className="bg-[var(--surface-alt)] text-[var(--ink-secondary)] font-semibold border-b border-[var(--border)] whitespace-nowrap">
             <tr>
               <th className="py-2.5 px-3 whitespace-nowrap">학기</th>
               <th className="py-2.5 px-3 whitespace-nowrap">교과</th>
@@ -160,11 +160,11 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
               <th className="py-2.5 px-2 text-center whitespace-nowrap">원점수</th>
               <th className="py-2.5 px-2 text-center whitespace-nowrap">과목평균</th>
               <th className="py-2.5 px-2 text-center whitespace-nowrap">성취도</th>
-              <th className="py-2.5 px-2 text-center bg-blue-50 text-blue-900 font-bold whitespace-nowrap">
+              <th className="py-2.5 px-2 text-center bg-[var(--korean)]/10 text-[var(--korean)] font-bold whitespace-nowrap">
                 5등급 석차
               </th>
               {(gradeSystemMode === '9grade' || gradeSystemMode === 'both') && (
-                <th className="py-2.5 px-2 text-center bg-amber-50 text-amber-950 font-bold whitespace-nowrap">
+                <th className="py-2.5 px-2 text-center bg-[var(--accent-soft)] text-[var(--accent)] font-bold whitespace-nowrap">
                   9등급 환산
                 </th>
               )}
@@ -173,10 +173,10 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
               <th className="py-2.5 px-2 text-center whitespace-nowrap">관리</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-stone-200 font-medium text-stone-800 whitespace-nowrap">
+          <tbody className="divide-y divide-[var(--border)] font-medium text-[var(--ink)] whitespace-nowrap">
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={13} className="py-8 text-center text-stone-400 text-xs whitespace-nowrap">
+                <td colSpan={13} className="py-8 text-center text-[var(--muted)] text-xs whitespace-nowrap">
                   조건에 맞는 과목 성적 데이터가 없습니다.
                 </td>
               </tr>
@@ -190,51 +190,51 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
                 return (
                   <tr
                     key={r.id}
-                    className={`hover:bg-stone-50/90 transition-colors whitespace-nowrap ${
-                      isGrade1 ? 'bg-amber-50/15' : ''
+                    className={`hover:bg-[var(--surface-alt)]/90 transition-colors whitespace-nowrap ${
+                      isGrade1 ? 'bg-[var(--accent-soft)]/15' : ''
                     }`}
                   >
-                    <td className="py-2 px-3 text-stone-600 font-semibold whitespace-nowrap">{r.semester}</td>
-                    <td className="py-2 px-3 text-stone-700 whitespace-nowrap">{r.category}</td>
-                    <td className="py-2 px-3 font-bold text-stone-900 flex items-center gap-1.5 whitespace-nowrap">
+                    <td className="py-2 px-3 text-[var(--ink-secondary)] font-semibold whitespace-nowrap">{r.semester}</td>
+                    <td className="py-2 px-3 text-[var(--ink-secondary)] whitespace-nowrap">{r.category}</td>
+                    <td className="py-2 px-3 font-bold text-[var(--ink)] flex items-center gap-1.5 whitespace-nowrap">
                       {r.subjectName}
                       {isGrade1 && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" title="1등급 과목"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" title="1등급 과목"></span>
                       )}
                     </td>
-                    <td className="py-2 px-2 text-stone-500 text-[11px] whitespace-nowrap">{r.courseType}</td>
+                    <td className="py-2 px-2 text-[var(--muted)] text-[11px] whitespace-nowrap">{r.courseType}</td>
                     <td className="py-2 px-2 text-center font-semibold whitespace-nowrap">{r.units}</td>
-                    <td className="py-2 px-2 text-center font-bold text-stone-900 whitespace-nowrap">
+                    <td className="py-2 px-2 text-center font-bold text-[var(--ink)] whitespace-nowrap">
                       {r.rawScore ?? '-'}
                     </td>
-                    <td className="py-2 px-2 text-center text-stone-500 whitespace-nowrap">
+                    <td className="py-2 px-2 text-center text-[var(--muted)] whitespace-nowrap">
                       {r.subjectMean ?? '-'}
                     </td>
                     <td className="py-2 px-2 text-center whitespace-nowrap">
                       <span
                         className={`inline-block px-1.5 py-0.5 rounded-md text-[11px] font-bold whitespace-nowrap ${
                           r.achievement === 'A'
-                            ? 'bg-blue-100 text-blue-800'
+                            ? 'bg-[var(--korean)]/15 text-[var(--korean)]'
                             : r.achievement === 'B'
-                            ? 'bg-stone-100 text-stone-800'
-                            : 'bg-stone-100 text-stone-600'
+                            ? 'bg-[var(--surface-alt)] text-[var(--ink)]'
+                            : 'bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                         }`}
                       >
                         {r.achievement}
                       </span>
                     </td>
-                    <td className="py-2 px-2 text-center bg-blue-50/30 font-extrabold text-blue-900 whitespace-nowrap">
+                    <td className="py-2 px-2 text-center bg-[var(--korean)]/30 font-extrabold text-[var(--korean)] whitespace-nowrap">
                       {r.rankGrade5 ? `${r.rankGrade5}등급` : '-'}
                     </td>
                     {(gradeSystemMode === '9grade' || gradeSystemMode === 'both') && (
-                      <td className="py-2 px-2 text-center bg-amber-50/30 font-bold text-amber-900 whitespace-nowrap">
+                      <td className="py-2 px-2 text-center bg-[var(--accent-soft)]/30 font-bold text-[var(--accent)] whitespace-nowrap">
                         {converted9 ? `${converted9}등급` : '-'}
                       </td>
                     )}
-                    <td className="py-2 px-3 text-center text-stone-500 whitespace-nowrap">
+                    <td className="py-2 px-3 text-center text-[var(--muted)] whitespace-nowrap">
                       {r.studentCount ? `${r.studentCount}명` : '-'}
                     </td>
-                    <td className="py-2 px-3 text-[11px] text-stone-500 font-mono whitespace-nowrap">
+                    <td className="py-2 px-3 text-[11px] text-[var(--muted)] font-mono whitespace-nowrap">
                       {r.achievementRatios
                         ? `${r.achievementRatios.A}% / ${r.achievementRatios.B}% / ${r.achievementRatios.C}% / ${r.achievementRatios.D}% / ${r.achievementRatios.E}%`
                         : '-'}
@@ -244,7 +244,7 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
                         <button
                           type="button"
                           onClick={() => onEditCourse(r)}
-                          className="p-1 hover:text-stone-900 text-stone-400 rounded-md transition-colors cursor-pointer"
+                          className="p-1 hover:text-[var(--ink)] text-[var(--muted)] rounded-md transition-colors cursor-pointer"
                           title="과목 수정"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
@@ -252,7 +252,7 @@ export const TranscriptTable: React.FC<TranscriptTableProps> = ({
                         <button
                           type="button"
                           onClick={() => onDeleteCourse(r.id)}
-                          className="p-1 hover:text-rose-600 text-stone-400 rounded-md transition-colors cursor-pointer"
+                          className="p-1 hover:text-[var(--critical)] text-[var(--muted)] rounded-md transition-colors cursor-pointer"
                           title="과목 삭제"
                         >
                           <Trash2 className="w-3.5 h-3.5" />

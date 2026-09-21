@@ -75,19 +75,19 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-      <div className="bg-white rounded-2xl border border-stone-200 shadow-xl max-w-lg w-full overflow-hidden">
+      <div className="bg-[var(--surface)] rounded-2xl border border-[var(--border)] shadow-xl max-w-lg w-full overflow-hidden">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-stone-200 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-[var(--border)] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <PlusCircle className="w-5 h-5 text-amber-500" />
-            <h3 className="text-base font-bold text-stone-900">
+            <PlusCircle className="w-5 h-5 text-[var(--accent)]" />
+            <h3 className="text-base font-bold text-[var(--ink)]">
               {initialCourse ? '과목 성적 수정' : '새 과목 성적 등록'}
             </h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
+            className="p-1 rounded-lg text-[var(--muted)] hover:text-[var(--ink-secondary)] hover:bg-[var(--surface-alt)] transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -97,12 +97,12 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
         <form onSubmit={handleSubmit} className="p-6 space-y-4 text-xs">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">학기</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">학기</label>
               <select
                 aria-label="학기 선택"
                 value={semester}
                 onChange={(e) => setSemester(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               >
                 <option value="1-1">1학년 1학기 (1-1)</option>
                 <option value="1-2">1학년 2학기 (1-2)</option>
@@ -113,12 +113,12 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
             </div>
 
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">교과군</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">교과군</label>
               <select
                 aria-label="교과군 선택"
                 value={category}
                 onChange={(e) => setCategory(e.target.value as SubjectCategory)}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               >
                 <option value="국어">국어</option>
                 <option value="수학">수학</option>
@@ -135,23 +135,23 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
 
           <div className="grid grid-cols-3 gap-3">
             <div className="col-span-2">
-              <label className="font-semibold text-stone-700 block mb-1">과목명 *</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">과목명 *</label>
               <input
                 type="text"
                 required
                 placeholder="예: 생명과학, 대수, 문학"
                 value={subjectName}
                 onChange={(e) => setSubjectName(e.target.value)}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">과목구분</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">과목구분</label>
               <select
                 aria-label="과목구분 선택"
                 value={courseType}
                 onChange={(e) => setCourseType(e.target.value as CourseType)}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               >
                 <option value="공통">공통</option>
                 <option value="일반">일반</option>
@@ -165,7 +165,7 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
 
           <div className="grid grid-cols-4 gap-3">
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">단위수</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">단위수</label>
               <input
                 type="number"
                 min="1"
@@ -173,11 +173,11 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
                 required
                 value={units}
                 onChange={(e) => setUnits(Number(e.target.value))}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">원점수</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">원점수</label>
               <input
                 type="number"
                 min="0"
@@ -185,11 +185,11 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
                 placeholder="95"
                 value={rawScore}
                 onChange={(e) => setRawScore(e.target.value === '' ? '' : Number(e.target.value))}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">과목평균</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">과목평균</label>
               <input
                 type="number"
                 step="0.1"
@@ -198,16 +198,16 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
                 placeholder="74.2"
                 value={subjectMean}
                 onChange={(e) => setSubjectMean(e.target.value === '' ? '' : Number(e.target.value))}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">성취도</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">성취도</label>
               <select
                 aria-label="성취도 선택"
                 value={achievement}
                 onChange={(e) => setAchievement(e.target.value as Achievement)}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-bold"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-bold"
               >
                 <option value="A">A</option>
                 <option value="B">B</option>
@@ -221,14 +221,14 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="font-semibold text-blue-800 block mb-1">
+              <label className="font-semibold text-[var(--korean)] block mb-1">
                 5등급제 석차등급 (1~5)
               </label>
               <select
                 aria-label="5등급제 석차등급 선택"
                 value={rankGrade5}
                 onChange={(e) => setRankGrade5(e.target.value === '' ? '' : Number(e.target.value))}
-                className="w-full bg-blue-50/50 border border-blue-300 rounded-lg p-2 text-blue-900 font-bold"
+                className="w-full bg-[var(--korean)]/50 border border-[var(--korean)]/30 rounded-lg p-2 text-[var(--korean)] font-bold"
               >
                 <option value="">등급 미산출 (P 등)</option>
                 <option value="1">1등급 (상위 10%)</option>
@@ -240,32 +240,32 @@ export const CourseEditModal: React.FC<CourseEditModalProps> = ({
             </div>
 
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">수강자 수</label>
+              <label className="font-semibold text-[var(--ink-secondary)] block mb-1">수강자 수</label>
               <input
                 type="number"
                 min="1"
                 placeholder="195"
                 value={studentCount}
                 onChange={(e) => setStudentCount(e.target.value === '' ? '' : Number(e.target.value))}
-                className="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 text-stone-900 font-medium"
+                className="w-full bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-lg p-2 text-[var(--ink)] font-medium"
               />
             </div>
           </div>
 
           {/* Buttons */}
-          <div className="pt-4 border-t border-stone-200 flex items-center justify-end gap-2">
+          <div className="pt-4 border-t border-[var(--border)] flex items-center justify-end gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors cursor-pointer"
+              className="px-4 py-2 text-[var(--ink-secondary)] hover:bg-[var(--surface-alt)] rounded-lg transition-colors cursor-pointer"
             >
               취소
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-stone-900 text-white font-semibold rounded-lg hover:bg-stone-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-4 py-2 bg-[var(--ink)] text-white font-semibold rounded-lg hover:bg-[var(--ink)] transition-colors flex items-center gap-1.5 cursor-pointer"
             >
-              <Save className="w-4 h-4 text-amber-400" />
+              <Save className="w-4 h-4 text-[var(--accent)]" />
               <span>저장하기</span>
             </button>
           </div>

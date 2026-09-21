@@ -363,7 +363,7 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
       {/* PAGE 1 SHEET */}
       <div
         id="consultation-report-sheet-p1"
-        className="consultation-report-page text-stone-900 bg-white font-sans text-xs leading-normal w-full max-w-[210mm] min-h-[297mm] p-3 sm:p-5 md:p-[7mm] lg:p-[9mm] mx-auto box-border flex flex-col justify-between gap-2 shadow-xl print:shadow-none print:m-0 print:border-none print:p-0"
+        className="consultation-report-page text-[var(--ink)] bg-[var(--surface)] font-sans text-xs leading-normal w-full max-w-[210mm] min-h-[297mm] p-3 sm:p-5 md:p-[7mm] lg:p-[9mm] mx-auto box-border flex flex-col justify-between gap-2 shadow-xl print:shadow-none print:m-0 print:border-none print:p-0"
         style={{
           maxWidth: '210mm',
           minHeight: '297mm',
@@ -371,42 +371,42 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
         }}
       >
         {/* Official Document Header - Clean & Dignified */}
-        <div className="border-b-2 border-stone-900 pb-2 flex flex-row items-end justify-between gap-2">
+        <div className="border-b-2 border-[var(--border-strong)] pb-2 flex flex-row items-end justify-between gap-2">
           <div>
-            <div className="flex items-center gap-1.5 text-blue-900 text-[11px] font-black tracking-tight mb-0.5">
-              <Building2 className="w-3.5 h-3.5 text-blue-800 shrink-0" />
+            <div className="flex items-center gap-1.5 text-[var(--korean)] text-[11px] font-black tracking-tight mb-0.5">
+              <Building2 className="w-3.5 h-3.5 text-[var(--korean)] shrink-0" />
               <span>숭신고등학교 진로진학상담부 • 미래인재반 심층(내신) 상담자료</span>
             </div>
-            <h1 className="text-xl font-black tracking-tight text-stone-950">
+            <h1 className="text-xl font-black tracking-tight text-[var(--ink)]">
               2028 대입 내신 성적 진단 및 9등급 변환 종합 리포트
             </h1>
           </div>
-          <div className="text-right text-[10px] text-stone-500 shrink-0 font-mono flex flex-col items-end">
-            <span className="inline-block px-2 py-0.5 rounded bg-stone-900 text-white text-[10px] font-black font-mono">
+          <div className="text-right text-[10px] text-[var(--muted)] shrink-0 font-mono flex flex-col items-end">
+            <span className="inline-block px-2 py-0.5 rounded bg-[var(--ink)] text-white text-[10px] font-black font-mono">
               [ 1 / 2 페이지 ]
             </span>
           </div>
         </div>
 
       {/* Student Profile Info Grid - 4 Columns */}
-      <div className="grid grid-cols-4 gap-2 bg-stone-50 py-1.5 px-3 rounded-md border border-stone-300 text-[11px]">
+      <div className="grid grid-cols-4 gap-2 bg-[var(--surface-alt)] py-1.5 px-3 rounded-md border border-[var(--border-strong)] text-[11px]">
         <div>
-          <span className="text-stone-500 text-[10px] font-bold block">학생 성명</span>
-          <span className="font-black text-stone-950 text-xs">{student.name}</span>
+          <span className="text-[var(--muted)] text-[10px] font-bold block">학생 성명</span>
+          <span className="font-black text-[var(--ink)] text-xs">{student.name}</span>
         </div>
         <div>
-          <span className="text-stone-500 text-[10px] font-bold block">학적</span>
-          <span className="font-bold text-stone-900">
+          <span className="text-[var(--muted)] text-[10px] font-bold block">학적</span>
+          <span className="font-bold text-[var(--ink)]">
             {student.grade}학년 {student.classNum}반 {student.studentNum ? `${student.studentNum}번` : ''}
           </span>
         </div>
         <div>
-          <span className="text-stone-500 text-[10px] font-bold block">진로 희망 계열</span>
-          <span className="font-bold text-stone-900">{student.track}</span>
+          <span className="text-[var(--muted)] text-[10px] font-bold block">진로 희망 계열</span>
+          <span className="font-bold text-[var(--ink)]">{student.track}</span>
         </div>
         <div>
-          <span className="text-stone-500 text-[10px] font-bold block">누적 이수 학기 / 단위</span>
-          <span className="font-black text-stone-950 font-mono">
+          <span className="text-[var(--muted)] text-[10px] font-bold block">누적 이수 학기 / 단위</span>
+          <span className="font-black text-[var(--ink)] font-mono">
             {distinctSemesters.join(', ')} ({allSummary.totalUnits}단위)
           </span>
         </div>
@@ -416,42 +416,42 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
       <div className="grid grid-cols-2 gap-3 items-stretch">
         {/* Section 1: 5등급제 성적 및 대학 반영 교과군 조합 요약 */}
         <div className="flex flex-col space-y-1.5">
-          <h2 className="font-black text-stone-950 flex items-center gap-1.5 text-[11px] border-l-3 border-blue-700 pl-1.5 shrink-0">
+          <h2 className="font-black text-[var(--ink)] flex items-center gap-1.5 text-[11px] border-l-3 border-[var(--korean)]/40 pl-1.5 shrink-0">
             1. 5등급제 성적 및 대학 반영 교과군 조합
           </h2>
 
           {/* Top 2 Key Indicator Cards (평균 원점수, 과목수, 이수단위 제외) */}
           <div className="grid grid-cols-2 gap-2">
             {/* Card 1: 5등급제 전과목 */}
-            <div className="py-1.5 px-2 bg-blue-50/80 rounded border border-blue-300 flex flex-col justify-center">
-              <span className="text-[9.5px] font-black text-blue-900 block">
+            <div className="py-1.5 px-2 bg-[var(--korean)]/80 rounded border border-[var(--korean)]/30 flex flex-col justify-center">
+              <span className="text-[9.5px] font-black text-[var(--korean)] block">
                 5등급제 전과목
               </span>
-              <span className="text-lg font-black text-blue-950 font-mono leading-tight my-0.5">
+              <span className="text-lg font-black text-[var(--korean)] font-mono leading-tight my-0.5">
                 {allSummary.weightedGpa5}등급
               </span>
-              <span className="text-[8.5px] text-blue-700 font-bold block">
+              <span className="text-[8.5px] text-[var(--korean)] font-bold block">
                 단위미반영 {allSummary.unweightedGpa5}등급
               </span>
             </div>
 
             {/* Card 2: 9등급 변환 */}
-            <div className="py-1.5 px-2 bg-amber-50/80 rounded border border-amber-300 flex flex-col justify-center">
-              <span className="text-[9.5px] font-black text-amber-900 block">
+            <div className="py-1.5 px-2 bg-[var(--accent-soft)]/80 rounded border border-[var(--accent)]/30 flex flex-col justify-center">
+              <span className="text-[9.5px] font-black text-[var(--accent)] block">
                 ★ 9등급 변환
               </span>
-              <span className="text-lg font-black text-amber-950 font-mono leading-tight my-0.5">
+              <span className="text-lg font-black text-[var(--accent)] font-mono leading-tight my-0.5">
                 약 {avgSummary.weightedGpa9}등급
               </span>
-              <span className="text-[8.5px] text-amber-800 font-bold flex items-center gap-1">
-                <TrendingUp className="w-3 h-3 text-emerald-700 shrink-0" />
+              <span className="text-[8.5px] text-[var(--accent)] font-bold flex items-center gap-1">
+                <TrendingUp className="w-3 h-3 text-[var(--good)] shrink-0" />
                 <span>{trajectory.trend}</span>
               </span>
             </div>
           </div>
 
           {/* 4 Major University Combinations Table (과목수, 이수단위, 평균원점수 제외하고 3컬럼으로 간결화) */}
-          <div className="border border-stone-300 rounded overflow-hidden flex-1 flex flex-col justify-between">
+          <div className="border border-[var(--border-strong)] rounded overflow-hidden flex-1 flex flex-col justify-between">
             <table className="w-full text-center text-xs border-collapse table-fixed h-full">
               <colgroup>
                 <col style={{ width: '52%' }} />
@@ -459,65 +459,65 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                 <col style={{ width: '24%' }} />
               </colgroup>
               <thead>
-                <tr className="bg-stone-200/80 text-stone-950 font-black border-b border-stone-300 text-[10px]">
-                  <th className="py-1.5 px-2 text-left border-r border-stone-300">반영 교과군 조합</th>
-                  <th className="py-1.5 px-1 border-r border-stone-300 bg-blue-100/60 text-blue-950">
+                <tr className="bg-[var(--border)]/80 text-[var(--ink)] font-black border-b border-[var(--border-strong)] text-[10px]">
+                  <th className="py-1.5 px-2 text-left border-r border-[var(--border-strong)]">반영 교과군 조합</th>
+                  <th className="py-1.5 px-1 border-r border-[var(--border-strong)] bg-[var(--korean)]/60 text-[var(--korean)]">
                     5등급제
                   </th>
-                  <th className="py-1.5 px-1 bg-amber-100/60 text-amber-950">
+                  <th className="py-1.5 px-1 bg-[var(--accent-soft)]/60 text-[var(--accent)]">
                     9등급 변환
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-200 font-mono text-[10px]">
+              <tbody className="divide-y divide-[var(--border)] font-mono text-[10px]">
                 {/* 1. 전과목 */}
-                <tr className="bg-white">
-                  <td className="py-1.5 px-2 font-bold text-stone-950 text-left border-r border-stone-200 font-sans leading-tight">
+                <tr className="bg-[var(--surface)]">
+                  <td className="py-1.5 px-2 font-bold text-[var(--ink)] text-left border-r border-[var(--border)] font-sans leading-tight">
                     전과목 (학생부 전체)
                   </td>
-                  <td className="py-1.5 px-1 border-r border-stone-200 font-black text-blue-950 bg-blue-50/30">
+                  <td className="py-1.5 px-1 border-r border-[var(--border)] font-black text-[var(--korean)] bg-[var(--korean)]/30">
                     {allComb.weightedGpa5}등급
                   </td>
-                  <td className="py-1.5 px-1 font-black text-amber-950 bg-amber-50/30">
+                  <td className="py-1.5 px-1 font-black text-[var(--accent)] bg-[var(--accent-soft)]/30">
                     약 {allComb.weightedGpa9}등급
                   </td>
                 </tr>
 
                 {/* 2. 국·영·수·사·과·한국사 */}
-                <tr className="bg-stone-50/40">
-                  <td className="py-1.5 px-2 font-bold text-blue-950 text-left border-r border-stone-200 font-sans leading-tight">
+                <tr className="bg-[var(--surface-alt)]/40">
+                  <td className="py-1.5 px-2 font-bold text-[var(--korean)] text-left border-r border-[var(--border)] font-sans leading-tight">
                     국·영·수·사·과·한국사
                   </td>
-                  <td className="py-1.5 px-1 border-r border-stone-200 font-black text-blue-950 bg-blue-50/30">
+                  <td className="py-1.5 px-1 border-r border-[var(--border)] font-black text-[var(--korean)] bg-[var(--korean)]/30">
                     {kmesHistComb.weightedGpa5}등급
                   </td>
-                  <td className="py-1.5 px-1 font-black text-amber-950 bg-amber-50/30">
+                  <td className="py-1.5 px-1 font-black text-[var(--accent)] bg-[var(--accent-soft)]/30">
                     약 {kmesHistComb.weightedGpa9}등급
                   </td>
                 </tr>
 
                 {/* 3. 국·영·수·사 */}
-                <tr className="bg-white">
-                  <td className="py-1.5 px-2 font-bold text-stone-900 text-left border-r border-stone-200 font-sans leading-tight">
+                <tr className="bg-[var(--surface)]">
+                  <td className="py-1.5 px-2 font-bold text-[var(--ink)] text-left border-r border-[var(--border)] font-sans leading-tight">
                     국·영·수·사 (인문/사회)
                   </td>
-                  <td className="py-1.5 px-1 border-r border-stone-200 font-black text-blue-950 bg-blue-50/30">
+                  <td className="py-1.5 px-1 border-r border-[var(--border)] font-black text-[var(--korean)] bg-[var(--korean)]/30">
                     {kmeHistComb.weightedGpa5}등급
                   </td>
-                  <td className="py-1.5 px-1 font-black text-amber-950 bg-amber-50/30">
+                  <td className="py-1.5 px-1 font-black text-[var(--accent)] bg-[var(--accent-soft)]/30">
                     약 {kmeHistComb.weightedGpa9}등급
                   </td>
                 </tr>
 
                 {/* 4. 국·영·수·과 */}
-                <tr className="bg-stone-50/40">
-                  <td className="py-1.5 px-2 font-bold text-stone-900 text-left border-r border-stone-200 font-sans leading-tight">
+                <tr className="bg-[var(--surface-alt)]/40">
+                  <td className="py-1.5 px-2 font-bold text-[var(--ink)] text-left border-r border-[var(--border)] font-sans leading-tight">
                     국·영·수·과 (자연/이공)
                   </td>
-                  <td className="py-1.5 px-1 border-r border-stone-200 font-black text-blue-950 bg-blue-50/30">
+                  <td className="py-1.5 px-1 border-r border-[var(--border)] font-black text-[var(--korean)] bg-[var(--korean)]/30">
                     {kmesComb.weightedGpa5}등급
                   </td>
-                  <td className="py-1.5 px-1 font-black text-amber-950 bg-amber-50/30">
+                  <td className="py-1.5 px-1 font-black text-[var(--accent)] bg-[var(--accent-soft)]/30">
                     약 {kmesComb.weightedGpa9}등급
                   </td>
                 </tr>
@@ -529,15 +529,15 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
         {/* Section 2: 주요 6대 교과군 역량 분석 (학생 vs 미래인재반 평균 [격차]) */}
         <div className="flex flex-col space-y-1.5">
           <div className="flex items-center justify-between">
-            <h2 className="font-black text-stone-950 flex items-center gap-1.5 text-[11px] border-l-3 border-blue-700 pl-1.5 shrink-0">
+            <h2 className="font-black text-[var(--ink)] flex items-center gap-1.5 text-[11px] border-l-3 border-[var(--korean)]/40 pl-1.5 shrink-0">
               2. 6대 교과군 역량 분석 (vs 미래인재반)
             </h2>
-            <span className="text-[9px] text-stone-500 font-bold">
+            <span className="text-[9px] text-[var(--muted)] font-bold">
               미래인재반 {cohortCount}명 기준
             </span>
           </div>
 
-          <div className="grid grid-cols-12 gap-1.5 p-1.5 bg-stone-50 rounded border border-stone-300 items-center flex-1">
+          <div className="grid grid-cols-12 gap-1.5 p-1.5 bg-[var(--surface-alt)] rounded border border-[var(--border-strong)] items-center flex-1">
             {/* Left Sub-Column: Hexagonal Radar Chart (Enlarged) */}
             <div className="col-span-7 flex flex-col items-center justify-center">
               <svg
@@ -557,8 +557,8 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                     <g key={idx}>
                       <polygon
                         points={ringPoints}
-                        fill={ring.score === 70 ? '#f8fafc' : 'none'}
-                        stroke={ring.isMajor ? '#94a3b8' : '#e2e8f0'}
+                        fill={ring.score === 70 ? 'var(--surface-alt)' : 'none'}
+                        stroke={ring.isMajor ? 'var(--border-strong)' : 'var(--border)'}
                         strokeWidth={ring.score === 100 ? '1.2' : '0.8'}
                       />
                       {ring.isMajor && (
@@ -569,8 +569,8 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                             width="14"
                             height="8"
                             rx="1.5"
-                            fill="#ffffff"
-                            stroke="#cbd5e1"
+                            fill="var(--surface)"
+                            stroke="var(--border-strong)"
                             strokeWidth="0.5"
                           />
                           <text
@@ -578,7 +578,7 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                             y={svgCenter.y - radarRadius * ring.ratio + 2}
                             fontSize="6"
                             fontWeight="bold"
-                            fill="#475569"
+                            fill="var(--ink-secondary)"
                             textAnchor="middle"
                           >
                             {ring.score}
@@ -599,7 +599,7 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                       y1={svgCenter.y}
                       x2={p.x}
                       y2={p.y}
-                      stroke="#cbd5e1"
+                      stroke="var(--border-strong)"
                       strokeWidth="0.8"
                     />
                   );
@@ -608,8 +608,9 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                 {/* Polygon 1: 숭신고 미래인재반 평균 (Cohort) */}
                 <polygon
                   points={cohortPolygonPoints}
-                  fill="rgba(245, 158, 11, 0.18)"
-                  stroke="#d97706"
+                  fill="var(--accent)"
+                  fillOpacity="0.18"
+                  stroke="var(--accent)"
                   strokeWidth="1.8"
                   strokeDasharray="3 2"
                 />
@@ -617,8 +618,9 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                 {/* Polygon 2: 학생 성적 (Student) */}
                 <polygon
                   points={studentPolygonPoints}
-                  fill="rgba(37, 99, 235, 0.25)"
-                  stroke="#1d4ed8"
+                  fill="var(--korean)"
+                  fillOpacity="0.25"
+                  stroke="var(--korean)"
                   strokeWidth="2.2"
                 />
 
@@ -630,15 +632,15 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
 
                   return (
                     <g key={d.axis}>
-                      <circle cx={pCohort.x} cy={pCohort.y} r="2.5" fill="#d97706" />
-                      <circle cx={pStudent.x} cy={pStudent.y} r="3" fill="#1d4ed8" />
+                      <circle cx={pCohort.x} cy={pCohort.y} r="2.5" fill="var(--accent)" />
+                      <circle cx={pStudent.x} cy={pStudent.y} r="3" fill="var(--korean)" />
                       <text
                         x={pOuter.x}
                         y={pOuter.y - 3}
                         textAnchor="middle"
                         dominantBaseline="central"
                         className="font-black text-[9.5px]"
-                        fill="#0f172a"
+                        fill="var(--ink)"
                       >
                         {d.axis}
                       </text>
@@ -648,7 +650,7 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                         textAnchor="middle"
                         dominantBaseline="central"
                         className="font-mono font-black text-[8px]"
-                        fill="#1d4ed8"
+                        fill="var(--korean)"
                       >
                         {d.studentRaw}점
                       </text>
@@ -659,12 +661,12 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
 
               {/* Compact Graph Legend */}
               <div className="flex items-center justify-center gap-2.5 mt-1 text-[8.5px] font-bold">
-                <span className="flex items-center gap-1 text-blue-900">
-                  <span className="w-2 h-2 rounded-xs bg-blue-600 inline-block shrink-0" />
+                <span className="flex items-center gap-1 text-[var(--korean)]">
+                  <span className="w-2 h-2 rounded-xs bg-[var(--korean)] inline-block shrink-0" />
                   {student.name}
                 </span>
-                <span className="flex items-center gap-1 text-amber-900">
-                  <span className="w-2 h-0.5 border-t-2 border-dashed border-amber-600 inline-block shrink-0" />
+                <span className="flex items-center gap-1 text-[var(--accent)]">
+                  <span className="w-2 h-0.5 border-t-2 border-dashed border-[var(--accent)]/40 inline-block shrink-0" />
                   미인반평균
                 </span>
               </div>
@@ -672,7 +674,7 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
 
             {/* Right Sub-Column: 1단 (Single Column) 6-Row Scoreboard */}
             <div className="col-span-5 flex flex-col justify-between space-y-1">
-              <div className="text-[8.5px] font-black text-stone-700 border-b border-stone-200 pb-0.5 flex justify-between px-0.5">
+              <div className="text-[8.5px] font-black text-[var(--ink-secondary)] border-b border-[var(--border)] pb-0.5 flex justify-between px-0.5">
                 <span>교과군</span>
                 <span>원점수 / 미인반평균 [격차]</span>
               </div>
@@ -685,26 +687,26 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                 return (
                   <div
                     key={d.axis}
-                    className="flex items-center justify-between py-1 px-1 rounded bg-white border border-stone-200 font-mono text-[8.5px]"
+                    className="flex items-center justify-between py-1 px-1 rounded bg-[var(--surface)] border border-[var(--border)] font-mono text-[8.5px]"
                   >
-                    <div className="font-sans font-bold text-stone-900 flex items-center gap-1 text-[9px]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                    <div className="font-sans font-bold text-[var(--ink)] flex items-center gap-1 text-[9px]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--korean)] shrink-0" />
                       <span>{d.axis}</span>
                     </div>
 
                     <div className="flex items-center gap-0.5 text-[8px]">
-                      <span className="font-bold text-blue-950">
+                      <span className="font-bold text-[var(--korean)]">
                         {d.studentRaw}
                       </span>
-                      <span className="text-stone-300">/</span>
-                      <span className="text-stone-500">{d.cohortRaw}</span>
+                      <span className="text-[var(--muted)]">/</span>
+                      <span className="text-[var(--muted)]">{d.cohortRaw}</span>
                       <span
                         className={`inline-block font-black text-[7.5px] px-1 py-0.2 rounded-xs ml-0.5 ${
                           isHigher
-                            ? 'text-emerald-700 bg-emerald-50'
+                            ? 'text-[var(--good)] bg-[var(--good)]/10'
                             : isTie
-                            ? 'text-stone-600 bg-stone-100'
-                            : 'text-rose-700 bg-rose-50'
+                            ? 'text-[var(--ink-secondary)] bg-[var(--surface-alt)]'
+                            : 'text-[var(--critical)] bg-[var(--critical)]/10'
                         }`}
                       >
                         {isHigher ? `+${diff}` : isTie ? '-' : `${diff}`}
@@ -721,15 +723,15 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
       {/* Section 3: 주요 교과군별 학기별(1-1, 1-2, 2-1) 성적 상세 및 9등급 변환 */}
       <div className="space-y-1">
         <div className="flex items-center justify-between">
-          <h2 className="font-black text-stone-950 flex items-center gap-1.5 text-[11px] border-l-3 border-blue-700 pl-1.5">
+          <h2 className="font-black text-[var(--ink)] flex items-center gap-1.5 text-[11px] border-l-3 border-[var(--korean)]/40 pl-1.5">
             3. 주요 교과군별 학기별 성적 추이 및 9등급 변환
           </h2>
-          <span className="text-[9.5px] text-stone-500 font-bold">
+          <span className="text-[9.5px] text-[var(--muted)] font-bold">
             * 정보 및 한문, 기술·가정 교과 등 통합 반영
           </span>
         </div>
 
-        <div className="border border-stone-300 rounded-md overflow-hidden">
+        <div className="border border-[var(--border-strong)] rounded-md overflow-hidden">
           <table className="w-full text-center text-xs border-collapse table-fixed">
             <colgroup>
               <col style={{ width: '20%' }} />
@@ -743,32 +745,32 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
               <col style={{ width: '8%' }} />
             </colgroup>
             <thead>
-              <tr className="bg-stone-200/80 text-stone-950 font-black border-b border-stone-300 text-[10px]">
-                <th className="py-1.5 px-2 text-left border-r border-stone-300">교과군</th>
+              <tr className="bg-[var(--border)]/80 text-[var(--ink)] font-black border-b border-[var(--border-strong)] text-[10px]">
+                <th className="py-1.5 px-2 text-left border-r border-[var(--border-strong)]">교과군</th>
                 {distinctSemesters.map((sem) => (
-                  <th key={sem} className="py-1.5 px-0.5 border-r border-stone-300 bg-stone-100">
+                  <th key={sem} className="py-1.5 px-0.5 border-r border-[var(--border-strong)] bg-[var(--surface-alt)]">
                     {sem}
                   </th>
                 ))}
-                <th className="py-1.5 px-1 border-r border-stone-300 bg-blue-100/60 text-blue-950">
+                <th className="py-1.5 px-1 border-r border-[var(--border-strong)] bg-[var(--korean)]/60 text-[var(--korean)]">
                   5등급제 평균
                 </th>
-                <th className="py-1.5 px-1 border-r border-stone-300 bg-amber-100/60 text-amber-950">
+                <th className="py-1.5 px-1 border-r border-[var(--border-strong)] bg-[var(--accent-soft)]/60 text-[var(--accent)]">
                   9등급 변환
                 </th>
-                <th className="py-1.5 px-0.5 border-r border-stone-300">총이수단위</th>
-                <th className="py-1.5 px-0.5 border-r border-stone-300">평균 원점수</th>
+                <th className="py-1.5 px-0.5 border-r border-[var(--border-strong)]">총이수단위</th>
+                <th className="py-1.5 px-0.5 border-r border-[var(--border-strong)]">평균 원점수</th>
                 <th className="py-1.5 px-0.5">A성취 비율</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-200 font-mono text-[10px]">
+            <tbody className="divide-y divide-[var(--border)] font-mono text-[10px]">
               {condensedCategoryRows.map((cat, idx) => {
                 return (
                   <tr
                     key={cat.category}
-                    className={idx % 2 === 0 ? 'bg-white' : 'bg-stone-50/50'}
+                    className={idx % 2 === 0 ? 'bg-[var(--surface)]' : 'bg-[var(--surface-alt)]/50'}
                   >
-                    <td className="py-1.5 px-2 font-bold text-stone-950 text-left border-r border-stone-200 font-sans text-[10px] leading-tight">
+                    <td className="py-1.5 px-2 font-bold text-[var(--ink)] text-left border-r border-[var(--border)] font-sans text-[10px] leading-tight">
                       {cat.category}
                     </td>
 
@@ -777,35 +779,35 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                       return (
                         <td
                           key={sem}
-                          className="py-1.5 px-0.5 border-r border-stone-200 text-stone-800 text-[10px]"
+                          className="py-1.5 px-0.5 border-r border-[var(--border)] text-[var(--ink)] text-[10px]"
                         >
                           {semData ? (
                             <span>
-                              <strong className="text-stone-950">{semData.gpa5}</strong>
-                              <span className="text-[9px] text-stone-500 font-sans ml-0.5">
+                              <strong className="text-[var(--ink)]">{semData.gpa5}</strong>
+                              <span className="text-[9px] text-[var(--muted)] font-sans ml-0.5">
                                 ({semData.avgRaw})
                               </span>
                             </span>
                           ) : (
-                            <span className="text-stone-400 font-sans">-</span>
+                            <span className="text-[var(--muted)] font-sans">-</span>
                           )}
                         </td>
                       );
                     })}
 
-                    <td className="py-1.5 px-1 border-r border-stone-200 font-black text-blue-950 bg-blue-50/30 text-[10px]">
+                    <td className="py-1.5 px-1 border-r border-[var(--border)] font-black text-[var(--korean)] bg-[var(--korean)]/30 text-[10px]">
                       {cat.weightedGpa5}등급
                     </td>
-                    <td className="py-1.5 px-1 border-r border-stone-200 font-black text-amber-950 bg-amber-50/30 text-[10px]">
+                    <td className="py-1.5 px-1 border-r border-[var(--border)] font-black text-[var(--accent)] bg-[var(--accent-soft)]/30 text-[10px]">
                       약 {cat.weightedGpa9}등급
                     </td>
-                    <td className="py-1.5 px-0.5 border-r border-stone-200 font-bold text-stone-900 text-[10px]">
+                    <td className="py-1.5 px-0.5 border-r border-[var(--border)] font-bold text-[var(--ink)] text-[10px]">
                       {cat.totalUnits}단위
                     </td>
-                    <td className="py-1.5 px-0.5 border-r border-stone-200 font-bold text-stone-900 text-[10px]">
+                    <td className="py-1.5 px-0.5 border-r border-[var(--border)] font-bold text-[var(--ink)] text-[10px]">
                       {cat.avgRawScore}점
                     </td>
-                    <td className="py-1.5 px-0.5 font-bold text-stone-700 text-[10px]">
+                    <td className="py-1.5 px-0.5 font-bold text-[var(--ink-secondary)] text-[10px]">
                       {cat.ratioA > 0 ? `${cat.ratioA}%` : '0%'}
                     </td>
                   </tr>
@@ -819,7 +821,7 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
       {/* Section 4: 숭신고등학교 진로진학상담부(미래인재반) 지도교사 종합 상담 의견 - 5줄 및 넉넉한 줄간격/높이 */}
       <div className="flex flex-col space-y-1 my-0.5">
         <div className="flex items-center justify-between">
-          <h2 className="font-black text-stone-950 flex items-center gap-1.5 text-[11px] border-l-3 border-blue-700 pl-1.5 shrink-0">
+          <h2 className="font-black text-[var(--ink)] flex items-center gap-1.5 text-[11px] border-l-3 border-[var(--korean)]/40 pl-1.5 shrink-0">
             4. 숭신고등학교 진로진학상담부(미래인재반) 지도교사 종합 상담 의견
           </h2>
           {!isPrintView && onCommentChange && (
@@ -834,17 +836,17 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
                   )
                 )
               }
-              className="text-[9.5px] text-blue-700 hover:text-blue-900 font-bold flex items-center gap-1 bg-blue-50 hover:bg-blue-100/80 px-2 py-0.5 rounded border border-blue-200 transition-colors cursor-pointer"
+              className="text-[9.5px] text-[var(--korean)] hover:text-[var(--korean)] font-bold flex items-center gap-1 bg-[var(--korean)]/10 hover:bg-[var(--korean)]/80 px-2 py-0.5 rounded border border-[var(--korean)]/25 transition-colors cursor-pointer"
               title="동급생 비교 분석을 바탕으로 구체적인 5줄 상담 의견을 자동 생성합니다."
             >
-              <Sparkles className="w-3 h-3 text-blue-600" />
+              <Sparkles className="w-3 h-3 text-[var(--korean)]" />
               <span>동급생 비교의견 자동생성</span>
             </button>
           )}
         </div>
-        <div className="min-h-[225px] flex flex-col p-3 bg-stone-50 border border-stone-300 rounded-md">
+        <div className="min-h-[225px] flex flex-col p-3 bg-[var(--surface-alt)] border border-[var(--border-strong)] rounded-md">
           {isPrintView ? (
-            <div className="flex-1 text-stone-900 text-[11px] leading-[1.85] font-medium whitespace-pre-line min-h-[195px]">
+            <div className="flex-1 text-[var(--ink)] text-[11px] leading-[1.85] font-medium whitespace-pre-line min-h-[195px]">
               {teacherComment}
             </div>
           ) : (
@@ -853,7 +855,7 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
               value={teacherComment}
               onChange={(e) => onCommentChange && onCommentChange(e.target.value)}
               rows={8}
-              className="w-full flex-1 min-h-[195px] overflow-hidden text-[11px] text-stone-900 bg-transparent border-0 focus:ring-0 resize-none font-medium leading-[1.85] p-0 focus:outline-none"
+              className="w-full flex-1 min-h-[195px] overflow-hidden text-[11px] text-[var(--ink)] bg-transparent border-0 focus:ring-0 resize-none font-medium leading-[1.85] p-0 focus:outline-none"
               placeholder="학생의 성취도, 강약점 교과 및 향후 대입 전략에 대한 지도 의견을 입력하세요."
             />
           )}
@@ -861,26 +863,26 @@ export const ConsultationReportContent: React.FC<ConsultationReportContentProps>
       </div>
 
       {/* Official Sign-off Footer */}
-      <div className="border-t-2 border-stone-900 pt-2 flex flex-row items-center justify-between gap-2 text-[10px] text-stone-700 font-sans shrink-0">
+      <div className="border-t-2 border-[var(--border-strong)] pt-2 flex flex-row items-center justify-between gap-2 text-[10px] text-[var(--ink-secondary)] font-sans shrink-0">
         <div className="flex items-center gap-1.5">
-          <Award className="w-3.5 h-3.5 text-blue-800 shrink-0" />
-          <span className="font-bold text-stone-900">
+          <Award className="w-3.5 h-3.5 text-[var(--korean)] shrink-0" />
+          <span className="font-bold text-[var(--ink)]">
             본 리포트는 숭신고 진로진학상담부에서 제작한 프로그램입니다.
           </span>
         </div>
-        <div className="flex items-center gap-2 text-right font-bold text-stone-950 shrink-0 whitespace-nowrap">
-          <span className="font-mono text-stone-600">[ 1 / 2 ]</span>
+        <div className="flex items-center gap-2 text-right font-bold text-[var(--ink)] shrink-0 whitespace-nowrap">
+          <span className="font-mono text-[var(--ink-secondary)]">[ 1 / 2 ]</span>
         </div>
       </div>
     </div>
 
     {/* On-screen Visual Page Divider (Hidden when printing) */}
-    <div className="print:hidden w-full max-w-[210mm] flex items-center justify-between my-6 py-2.5 px-4 bg-stone-800 text-white rounded-xl shadow-md text-xs font-bold">
+    <div className="print:hidden w-full max-w-[210mm] flex items-center justify-between my-6 py-2.5 px-4 bg-[var(--ink)] text-white rounded-xl shadow-md text-xs font-bold">
       <div className="flex items-center gap-2">
-        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+        <span className="w-2.5 h-2.5 rounded-full bg-[var(--good)] animate-pulse" />
         <span>다음 페이지 (2 / 2): 학기별 성적 추이 그래프 및 전체 과목 세부 성적 명세</span>
       </div>
-      <span className="bg-stone-700 px-2.5 py-1 rounded text-[11px] font-mono text-stone-200">
+      <span className="bg-[var(--ink-secondary)] px-2.5 py-1 rounded text-[11px] font-mono text-[var(--paper)]">
         PAGE 2 OF 2
       </span>
     </div>

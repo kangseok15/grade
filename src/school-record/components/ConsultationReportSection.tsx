@@ -111,27 +111,27 @@ export const ConsultationReportSection: React.FC<ConsultationReportSectionProps>
   return (
     <div className="space-y-4">
       {/* Top Action & Guidance Strip (Hidden on Print) */}
-      <div className="bg-stone-900 text-white rounded-xl p-3 sm:p-4 shadow-sm border border-stone-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 print:hidden">
+      <div className="bg-[var(--ink)] text-white rounded-xl p-3 sm:p-4 shadow-sm border border-[var(--border-strong)] flex flex-col md:flex-row items-start md:items-center justify-between gap-3 print:hidden">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-amber-400/20 text-amber-400 flex items-center justify-center font-bold shrink-0">
-            <Building2 className="w-5 h-5 text-amber-400" />
+          <div className="w-9 h-9 rounded-lg bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center font-bold shrink-0">
+            <Building2 className="w-5 h-5 text-[var(--accent)]" />
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-sm font-black tracking-tight text-white">
                 {student.name} 학생 2028 대입 진학상담 종합 리포트
               </h2>
-              <span className="text-[10px] bg-amber-400 text-stone-950 font-black px-2 py-0.5 rounded-full">
+              <span className="text-[10px] bg-[var(--accent)] text-white font-black px-2 py-0.5 rounded-full">
                 A4 1페이지 정식 양식
               </span>
               {pdfSuccess && (
-                <span className="inline-flex items-center gap-1 text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                <span className="inline-flex items-center gap-1 text-[10px] bg-[var(--good)]/20 text-[var(--good)] px-2 py-0.5 rounded-full font-bold">
                   <FileCheck className="w-3 h-3" />
                   PDF 저장 완료
                 </span>
               )}
             </div>
-            <p className="text-[11px] text-stone-300 font-medium mt-0.5">
+            <p className="text-[11px] text-[var(--muted)] font-medium mt-0.5">
               5등급제 종합 성적 • 9등급 환산 • 미래인재반 비교(70~100점 척도) • 학기별 추이 • 지도교사 상담의견
             </p>
           </div>
@@ -143,17 +143,17 @@ export const ConsultationReportSection: React.FC<ConsultationReportSectionProps>
             href={printUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white font-bold rounded-lg text-xs transition-colors border border-stone-700"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--ink)] hover:bg-[var(--ink-secondary)] text-[var(--paper)] hover:text-white font-bold rounded-lg text-xs transition-colors border border-[var(--border-strong)]"
             title="새 탭에서 열어 브라우저 고화질 PDF 저장 및 A4 출력을 실행합니다."
           >
-            <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
+            <ExternalLink className="w-3.5 h-3.5 text-[var(--accent)]" />
             <span>새 창에서 열기</span>
           </a>
 
           <button
             onClick={handleDownloadPdf}
             disabled={isGeneratingPdf}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-700 hover:bg-blue-600 text-white font-bold rounded-lg text-xs transition-colors cursor-pointer shadow-xs disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--korean)] hover:bg-[var(--korean)] text-white font-bold rounded-lg text-xs transition-colors cursor-pointer shadow-xs disabled:opacity-60"
             title="A4 규격 고화질 PDF 파일로 바로 다운로드합니다."
           >
             {isGeneratingPdf ? (
@@ -171,7 +171,7 @@ export const ConsultationReportSection: React.FC<ConsultationReportSectionProps>
 
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-stone-950 font-black rounded-lg text-xs transition-colors cursor-pointer shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[var(--accent)] hover:bg-[var(--accent)]/80 text-white font-black rounded-lg text-xs transition-colors cursor-pointer shadow-xs"
             title="브라우저 인쇄 대화상자(Ctrl+P)를 호출하여 A4 출력 또는 PDF로 저장합니다."
           >
             <Printer className="w-4 h-4" />
@@ -181,27 +181,27 @@ export const ConsultationReportSection: React.FC<ConsultationReportSectionProps>
       </div>
 
       {/* Tip Bar */}
-      <div className="bg-amber-50 border border-amber-200/80 rounded-lg py-2 px-3 text-xs text-amber-950 flex items-center justify-between gap-2 print:hidden">
+      <div className="bg-[var(--accent-soft)] border border-[var(--accent)]/80 rounded-lg py-2 px-3 text-xs text-[var(--accent)] flex items-center justify-between gap-2 print:hidden">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-amber-600 shrink-0" />
+          <Sparkles className="w-4 h-4 text-[var(--accent)] shrink-0" />
           <span className="text-[11.5px] font-medium leading-tight">
             <strong>실시간 작성 안내:</strong> 아래 <strong>[4. 지도교사 종합 상담 의견]</strong> 영역을 클릭하여 학생별 맞춤 지도 의견을 직접 입력하신 후 인쇄하시면 인쇄물에 그대로 반영됩니다.
           </span>
         </div>
-        <span className="text-[10px] text-amber-800 font-bold shrink-0 hidden sm:inline">
+        <span className="text-[10px] text-[var(--accent)] font-bold shrink-0 hidden sm:inline">
           학생부 5등급제 & 9등급제 환산 통합
         </span>
       </div>
 
       {errorMessage && (
-        <div className="bg-rose-50 border border-rose-200 text-rose-900 px-4 py-2 text-xs rounded-lg flex items-center gap-2 print:hidden">
-          <Info className="w-4 h-4 text-rose-600 shrink-0" />
+        <div className="bg-[var(--critical)]/10 border border-[var(--critical)]/25 text-[var(--critical)] px-4 py-2 text-xs rounded-lg flex items-center gap-2 print:hidden">
+          <Info className="w-4 h-4 text-[var(--critical)] shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {/* Centered A4 Report Paper Frame */}
-      <div className="bg-stone-100/70 p-2 sm:p-5 md:p-8 rounded-2xl border border-stone-200/80 flex justify-center overflow-x-auto shadow-inner print:p-0 print:m-0 print:border-none print:bg-white print:shadow-none">
+      <div className="bg-[var(--surface-alt)]/70 p-2 sm:p-5 md:p-8 rounded-2xl border border-[var(--border)]/80 flex justify-center overflow-x-auto shadow-inner print:p-0 print:m-0 print:border-none print:bg-[var(--surface)] print:shadow-none">
         <div className="w-full max-w-[210mm] print:border-none print:shadow-none print:m-0 print:p-0 print:w-full print:max-w-none">
           <ConsultationReportContent
             student={student}

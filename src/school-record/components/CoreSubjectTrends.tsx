@@ -44,56 +44,56 @@ const CORE_SUBJECT_CONFIGS: SubjectConfig[] = [
     key: '국어',
     label: '국어',
     shortLabel: '국어',
-    color: '#e11d48', // rose-600
-    lightBg: 'bg-rose-50/60',
-    borderColor: 'border-rose-200',
-    badgeBg: 'bg-rose-100 text-rose-800',
-    badgeText: 'text-rose-700',
-    icon: <BookOpen className="w-3.5 h-3.5 text-rose-600" />,
+    color: 'var(--korean)',
+    lightBg: 'bg-[var(--korean)]/10',
+    borderColor: 'border-[var(--korean)]/25',
+    badgeBg: 'bg-[var(--korean)]/15 text-[var(--korean)]',
+    badgeText: 'text-[var(--korean)]',
+    icon: <BookOpen className="w-3.5 h-3.5 text-[var(--korean)]" />,
   },
   {
     key: '영어',
     label: '영어',
     shortLabel: '영어',
-    color: '#d97706', // amber-600
-    lightBg: 'bg-amber-50/60',
-    borderColor: 'border-amber-200',
-    badgeBg: 'bg-amber-100 text-amber-800',
-    badgeText: 'text-amber-700',
-    icon: <Languages className="w-3.5 h-3.5 text-amber-600" />,
+    color: 'var(--english)',
+    lightBg: 'bg-[var(--english)]/10',
+    borderColor: 'border-[var(--english)]/25',
+    badgeBg: 'bg-[var(--english)]/15 text-[var(--english)]',
+    badgeText: 'text-[var(--english)]',
+    icon: <Languages className="w-3.5 h-3.5 text-[var(--english)]" />,
   },
   {
     key: '수학',
     label: '수학',
     shortLabel: '수학',
-    color: '#2563eb', // blue-600
-    lightBg: 'bg-blue-50/60',
-    borderColor: 'border-blue-200',
-    badgeBg: 'bg-blue-100 text-blue-800',
-    badgeText: 'text-blue-700',
-    icon: <Calculator className="w-3.5 h-3.5 text-blue-600" />,
+    color: 'var(--math)',
+    lightBg: 'bg-[var(--math)]/10',
+    borderColor: 'border-[var(--math)]/25',
+    badgeBg: 'bg-[var(--math)]/15 text-[var(--math)]',
+    badgeText: 'text-[var(--math)]',
+    icon: <Calculator className="w-3.5 h-3.5 text-[var(--math)]" />,
   },
   {
     key: '사회',
     label: '사회',
     shortLabel: '사회',
-    color: '#059669', // emerald-600
-    lightBg: 'bg-emerald-50/60',
-    borderColor: 'border-emerald-200',
-    badgeBg: 'bg-emerald-100 text-emerald-800',
-    badgeText: 'text-emerald-700',
-    icon: <Globe className="w-3.5 h-3.5 text-emerald-600" />,
+    color: 'var(--elective1)',
+    lightBg: 'bg-[var(--elective1)]/10',
+    borderColor: 'border-[var(--elective1)]/25',
+    badgeBg: 'bg-[var(--elective1)]/15 text-[var(--elective1)]',
+    badgeText: 'text-[var(--elective1)]',
+    icon: <Globe className="w-3.5 h-3.5 text-[var(--elective1)]" />,
   },
   {
     key: '과학',
     label: '과학',
     shortLabel: '과학',
-    color: '#7c3aed', // violet-600
-    lightBg: 'bg-violet-50/60',
-    borderColor: 'border-violet-200',
-    badgeBg: 'bg-violet-100 text-violet-800',
-    badgeText: 'text-violet-700',
-    icon: <Atom className="w-3.5 h-3.5 text-violet-600" />,
+    color: 'var(--elective2)',
+    lightBg: 'bg-[var(--elective2)]/10',
+    borderColor: 'border-[var(--elective2)]/25',
+    badgeBg: 'bg-[var(--elective2)]/15 text-[var(--elective2)]',
+    badgeText: 'text-[var(--elective2)]',
+    icon: <Atom className="w-3.5 h-3.5 text-[var(--elective2)]" />,
   },
 ];
 
@@ -238,33 +238,33 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
   });
 
   return (
-    <div className="pt-6 border-t border-stone-200" id="core-subjects-trend-section">
+    <div className="pt-6 border-t border-[var(--border)]" id="core-subjects-trend-section">
       {/* Section Header with View Mode Switcher */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3">
         <div>
           <div className="flex items-center gap-2">
-            <h4 className="text-sm font-bold text-stone-900 tracking-tight flex items-center gap-1.5 whitespace-nowrap">
-              <TrendingUp className="w-4 h-4 text-blue-600" />
+            <h4 className="text-sm font-bold text-[var(--ink)] tracking-tight flex items-center gap-1.5 whitespace-nowrap">
+              <TrendingUp className="w-4 h-4 text-[var(--korean)]" />
               주요 5대 교과별 학기별 성적 추이 그래프
             </h4>
-            <span className="text-[11px] px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 border border-stone-200 font-semibold whitespace-nowrap">
+            <span className="text-[11px] px-2 py-0.5 rounded-md bg-[var(--surface-alt)] text-[var(--ink-secondary)] border border-[var(--border)] font-semibold whitespace-nowrap">
               국어 · 영어 · 수학 · 사회 · 과학
             </span>
           </div>
-          <p className="text-xs text-stone-500 mt-0.5">
+          <p className="text-xs text-[var(--muted)] mt-0.5">
             5대 핵심 교과의 학기별 5등급제 성적 변화, 이수 과목 및 등급 추이를 개별/통합 그래프로 비교 분석합니다.
           </p>
         </div>
 
         {/* View Switcher */}
-        <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-lg border border-stone-200 text-xs font-semibold whitespace-nowrap self-start sm:self-auto">
+        <div className="flex items-center gap-1 bg-[var(--surface-alt)] p-1 rounded-lg border border-[var(--border)] text-xs font-semibold whitespace-nowrap self-start sm:self-auto">
           <button
             type="button"
             onClick={() => setViewMode('cards')}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-colors cursor-pointer whitespace-nowrap ${
               viewMode === 'cards'
-                ? 'bg-white text-stone-900 shadow-2xs font-bold'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-[var(--surface)] text-[var(--ink)] shadow-2xs font-bold'
+                : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
             }`}
           >
             <LayoutGrid className="w-3.5 h-3.5" />
@@ -275,8 +275,8 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
             onClick={() => setViewMode('combined')}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-colors cursor-pointer whitespace-nowrap ${
               viewMode === 'combined'
-                ? 'bg-white text-stone-900 shadow-2xs font-bold'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-[var(--surface)] text-[var(--ink)] shadow-2xs font-bold'
+                : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -287,8 +287,8 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
             onClick={() => setViewMode('both')}
             className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer whitespace-nowrap ${
               viewMode === 'both'
-                ? 'bg-white text-stone-900 shadow-2xs font-bold'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-[var(--surface)] text-[var(--ink)] shadow-2xs font-bold'
+                : 'text-[var(--ink-secondary)] hover:text-[var(--ink)]'
             }`}
           >
             전체 보기
@@ -298,13 +298,13 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
 
       {/* VIEW 1: Combined Multi-Line Chart (Shown when 'combined' or 'both') */}
       {(viewMode === 'combined' || viewMode === 'both') && (
-        <div className="mb-5 p-4 rounded-xl bg-stone-50/80 border border-stone-200">
-          <div className="flex items-center justify-between pb-2 border-b border-stone-200/80 mb-3">
-            <span className="text-xs font-bold text-stone-800 flex items-center gap-1.5 whitespace-nowrap">
-              <Layers className="w-3.5 h-3.5 text-blue-600" />
+        <div className="mb-5 p-4 rounded-xl bg-[var(--surface-alt)]/80 border border-[var(--border)]">
+          <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]/80 mb-3">
+            <span className="text-xs font-bold text-[var(--ink)] flex items-center gap-1.5 whitespace-nowrap">
+              <Layers className="w-3.5 h-3.5 text-[var(--korean)]" />
               5대 교과 동시 비교 추이 그래프 (하단 1.0등급 기준)
             </span>
-            <span className="text-[11px] text-stone-500 whitespace-nowrap">
+            <span className="text-[11px] text-[var(--muted)] whitespace-nowrap">
               학기별 5등급제 평균 등급 (국·영·수·사·과)
             </span>
           </div>
@@ -312,32 +312,32 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={combinedChartData} margin={{ top: 15, right: 25, left: -5, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
                 <XAxis
                   dataKey="term"
-                  tick={{ fill: '#57534e', fontSize: 12, fontWeight: 600 }}
-                  tickLine={{ stroke: '#d6d3d1' }}
+                  tick={{ fill: 'var(--ink-secondary)', fontSize: 12, fontWeight: 600 }}
+                  tickLine={{ stroke: 'var(--border-strong)' }}
                 />
                 <YAxis
                   reversed={false}
                   domain={[1.0, miniYMax]}
                   ticks={miniYTicks}
-                  tick={{ fill: '#78716c', fontSize: 11 }}
+                  tick={{ fill: 'var(--muted)', fontSize: 11 }}
                   tickFormatter={(v) => `${Number(v).toFixed(1)}등급`}
-                  tickLine={{ stroke: '#d6d3d1' }}
+                  tickLine={{ stroke: 'var(--border-strong)' }}
                 />
                 <Tooltip
                   content={({ active, payload, label }) => {
                     if (!active || !payload || !payload.length) return null;
                     return (
-                      <div className="bg-stone-900 text-white p-3 rounded-lg shadow-lg text-xs border border-stone-700 min-w-44 whitespace-nowrap">
-                        <div className="font-bold text-amber-400 border-b border-stone-700 pb-1 mb-2">
+                      <div className="bg-[var(--ink)] text-white p-3 rounded-lg shadow-lg text-xs border border-[var(--border-strong)] min-w-44 whitespace-nowrap">
+                        <div className="font-bold text-[var(--accent)] border-b border-[var(--border-strong)] pb-1 mb-2">
                           {label} 5대 교과 등급
                         </div>
                         <div className="space-y-1.5">
                           {payload.map((entry, idx) => (
                             <div key={idx} className="flex justify-between items-center gap-3">
-                              <span className="flex items-center gap-1.5 text-stone-300">
+                              <span className="flex items-center gap-1.5 text-[var(--muted)]">
                                 <span
                                   className="w-2.5 h-2.5 rounded-full inline-block"
                                   style={{ backgroundColor: entry.color }}
@@ -362,12 +362,12 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                 />
                 <ReferenceLine
                   y={1.0}
-                  stroke="#ca8a04"
+                  stroke="var(--accent)"
                   strokeWidth={1.5}
                   strokeDasharray="4 4"
                   label={{
                     value: '1.0등급 기준',
-                    fill: '#ca8a04',
+                    fill: 'var(--accent)',
                     fontSize: 10,
                     position: 'insideBottomRight',
                   }}
@@ -380,7 +380,7 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                     dataKey={config.shortLabel}
                     stroke={config.color}
                     strokeWidth={2.5}
-                    dot={{ fill: config.color, r: 4.5, strokeWidth: 1.5, stroke: '#fff' }}
+                    dot={{ fill: config.color, r: 4.5, strokeWidth: 1.5, stroke: 'var(--surface)' }}
                     activeDot={{ r: 6.5 }}
                     connectNulls
                   />
@@ -401,16 +401,16 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
             return (
               <div
                 key={subj.config.key}
-                className="bg-white rounded-xl border border-stone-200 hover:border-stone-300 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between p-3.5"
+                className="bg-[var(--surface)] rounded-xl border border-[var(--border)] hover:border-[var(--border-strong)] shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between p-3.5"
               >
                 {/* Card Top: Subject Header */}
                 <div>
-                  <div className="flex items-center justify-between gap-1.5 pb-2 border-b border-stone-100">
+                  <div className="flex items-center justify-between gap-1.5 pb-2 border-b border-[var(--border)]">
                     <div className="flex items-center gap-1.5">
-                      <div className="p-1 rounded-md bg-stone-100">
+                      <div className="p-1 rounded-md bg-[var(--surface-alt)]">
                         {subj.config.icon}
                       </div>
-                      <span className="font-bold text-stone-900 text-sm whitespace-nowrap">
+                      <span className="font-bold text-[var(--ink)] text-sm whitespace-nowrap">
                         {subj.config.label}
                       </span>
                     </div>
@@ -418,10 +418,10 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                     <span
                       className={`text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${
                         subj.trendType === 'up'
-                          ? 'bg-emerald-100 text-emerald-800'
+                          ? 'bg-[var(--good)]/15 text-[var(--good)]'
                           : subj.trendType === 'down'
-                          ? 'bg-rose-100 text-rose-800'
-                          : 'bg-stone-100 text-stone-700'
+                          ? 'bg-[var(--critical)]/15 text-[var(--critical)]'
+                          : 'bg-[var(--surface-alt)] text-[var(--ink-secondary)]'
                       }`}
                     >
                       {subj.trendLabel}
@@ -431,42 +431,42 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                   {/* Summary Metric Row */}
                   <div className="mt-2 flex items-baseline justify-between gap-2">
                     <div>
-                      <div className="text-[10px] text-stone-400 font-semibold uppercase tracking-wider whitespace-nowrap">
+                      <div className="text-[10px] text-[var(--muted)] font-semibold uppercase tracking-wider whitespace-nowrap">
                         5등급제 누적 평균
                       </div>
-                      <div className="text-xl font-black text-stone-900 tracking-tight whitespace-nowrap">
+                      <div className="text-xl font-black text-[var(--ink)] tracking-tight whitespace-nowrap">
                         {subj.overallGpa5.toFixed(2)}등급
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-xs font-semibold text-stone-600 block whitespace-nowrap">
+                      <span className="text-xs font-semibold text-[var(--ink-secondary)] block whitespace-nowrap">
                         {subj.totalUnits}단위 ({subj.recordsCount}과목)
                       </span>
-                      <span className="text-[11px] text-stone-400 block whitespace-nowrap">
+                      <span className="text-[11px] text-[var(--muted)] block whitespace-nowrap">
                         원점수 평균 {subj.overallAvgRaw}점
                       </span>
                     </div>
                   </div>
 
                   {/* Mini Line Chart for This Subject */}
-                  <div className="h-32 w-full mt-3 pt-1 border-t border-stone-100">
+                  <div className="h-32 w-full mt-3 pt-1 border-t border-[var(--border)]">
                     {hasMultiSem ? (
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart
                           data={subj.semesterData}
                           margin={{ top: 12, right: 12, left: -22, bottom: 2 }}
                         >
-                          <CartesianGrid strokeDasharray="2 2" stroke="#f5f5f4" vertical={false} />
+                          <CartesianGrid strokeDasharray="2 2" stroke="var(--border)" vertical={false} />
                           <XAxis
                             dataKey="term"
-                            tick={{ fill: '#78716c', fontSize: 10, fontWeight: 600 }}
+                            tick={{ fill: 'var(--muted)', fontSize: 10, fontWeight: 600 }}
                             tickLine={false}
                           />
                           <YAxis
                             reversed={false}
                             domain={[1.0, miniYMax]}
                             ticks={miniYTicks}
-                            tick={{ fill: '#a8a29e', fontSize: 9 }}
+                            tick={{ fill: 'var(--muted)', fontSize: 9 }}
                             tickLine={false}
                             tickFormatter={(v) => `${v}`}
                           />
@@ -475,15 +475,15 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                               if (!active || !payload || !payload.length) return null;
                               const d = subj.semesterData.find((x) => x.term === label);
                               return (
-                                <div className="bg-stone-900 text-white p-2.5 rounded-lg shadow-md text-xs border border-stone-700 whitespace-nowrap z-20">
-                                  <div className="font-bold text-amber-300 border-b border-stone-700 pb-1 mb-1.5 flex items-center justify-between gap-2">
+                                <div className="bg-[var(--ink)] text-white p-2.5 rounded-lg shadow-md text-xs border border-[var(--border-strong)] whitespace-nowrap z-20">
+                                  <div className="font-bold text-[var(--accent-soft)] border-b border-[var(--border-strong)] pb-1 mb-1.5 flex items-center justify-between gap-2">
                                     <span>{label} {subj.config.label}</span>
                                     <span>{d?.grade5 ? `${d.grade5}등급` : '미이수'}</span>
                                   </div>
                                   {d && d.courses.length > 0 ? (
                                     <div className="space-y-1 text-[11px]">
                                       {d.courses.map((c, ci) => (
-                                        <div key={ci} className="text-stone-300 flex justify-between gap-2">
+                                        <div key={ci} className="text-[var(--muted)] flex justify-between gap-2">
                                           <span>{c.name}</span>
                                           <span className="text-white font-semibold">
                                             {c.grade5}등급 ({c.rawScore}점)
@@ -492,7 +492,7 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                                       ))}
                                     </div>
                                   ) : (
-                                    <span className="text-stone-400 text-[11px]">개설/이수 과목 없음</span>
+                                    <span className="text-[var(--muted)] text-[11px]">개설/이수 과목 없음</span>
                                   )}
                                 </div>
                               );
@@ -500,7 +500,7 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                           />
                           <ReferenceLine
                             y={1.0}
-                            stroke="#eab308"
+                            stroke="var(--accent)"
                             strokeWidth={1}
                             strokeDasharray="2 2"
                           />
@@ -513,7 +513,7 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                               fill: subj.config.color,
                               r: 4,
                               strokeWidth: 1.5,
-                              stroke: '#fff',
+                              stroke: 'var(--surface)',
                             }}
                             activeDot={{ r: 6 }}
                             connectNulls
@@ -522,8 +522,8 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                       </ResponsiveContainer>
                     ) : (
                       /* Single semester student display (e.g. 1st grade) */
-                      <div className="h-full flex flex-col items-center justify-center p-2 rounded-lg bg-stone-50/80 border border-dashed border-stone-200 text-center">
-                        <div className="text-xs font-bold text-stone-800 whitespace-nowrap">
+                      <div className="h-full flex flex-col items-center justify-center p-2 rounded-lg bg-[var(--surface-alt)]/80 border border-dashed border-[var(--border)] text-center">
+                        <div className="text-xs font-bold text-[var(--ink)] whitespace-nowrap">
                           {singleSem?.term || '1-1'}학기 단일 기록
                         </div>
                         <div
@@ -534,7 +534,7 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                             ? `${singleSem.grade5.toFixed(2)}등급`
                             : '1.00등급'}
                         </div>
-                        <div className="text-[10px] text-stone-400 mt-0.5 whitespace-nowrap">
+                        <div className="text-[10px] text-[var(--muted)] mt-0.5 whitespace-nowrap">
                           향후 학기 누적 시 추이선 자동 연계
                         </div>
                       </div>
@@ -543,8 +543,8 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                 </div>
 
                 {/* Card Bottom: Semester Course Details */}
-                <div className="mt-3 pt-2 border-t border-stone-100 space-y-1.5">
-                  <div className="text-[10px] text-stone-400 font-semibold uppercase tracking-wider whitespace-nowrap">
+                <div className="mt-3 pt-2 border-t border-[var(--border)] space-y-1.5">
+                  <div className="text-[10px] text-[var(--muted)] font-semibold uppercase tracking-wider whitespace-nowrap">
                     학기별 이수 세부 과목
                   </div>
                   <div className="space-y-1">
@@ -553,10 +553,10 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                         return (
                           <div
                             key={sIdx}
-                            className="text-[11px] text-stone-400 flex items-center justify-between py-0.5 whitespace-nowrap"
+                            className="text-[11px] text-[var(--muted)] flex items-center justify-between py-0.5 whitespace-nowrap"
                           >
                             <span>{sem.term}학기</span>
-                            <span className="text-[10px] bg-stone-100 text-stone-500 px-1.5 py-0.2 rounded">
+                            <span className="text-[10px] bg-[var(--surface-alt)] text-[var(--muted)] px-1.5 py-0.2 rounded">
                               해당 학기 미이수
                             </span>
                           </div>
@@ -566,13 +566,13 @@ export const CoreSubjectTrends: React.FC<CoreSubjectTrendsProps> = ({ student })
                       return (
                         <div
                           key={sIdx}
-                          className="text-[11px] text-stone-700 flex items-center justify-between py-0.5 whitespace-nowrap"
+                          className="text-[11px] text-[var(--ink-secondary)] flex items-center justify-between py-0.5 whitespace-nowrap"
                         >
                           <span className="font-medium truncate max-w-[120px]" title={sem.courses.map((c) => c.name).join(', ')}>
-                            <span className="font-bold text-stone-900 mr-1">{sem.term}:</span>
+                            <span className="font-bold text-[var(--ink)] mr-1">{sem.term}:</span>
                             {sem.courses.map((c) => c.name).join(', ')}
                           </span>
-                          <span className="font-bold text-stone-900 ml-1.5 bg-stone-100 px-1.5 py-0.5 rounded text-[11px] whitespace-nowrap shrink-0">
+                          <span className="font-bold text-[var(--ink)] ml-1.5 bg-[var(--surface-alt)] px-1.5 py-0.5 rounded text-[11px] whitespace-nowrap shrink-0">
                             {sem.grade5?.toFixed(2)}등급
                           </span>
                         </div>

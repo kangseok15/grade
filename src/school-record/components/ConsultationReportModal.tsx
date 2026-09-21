@@ -159,24 +159,24 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--ink)]/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
       {/* Container */}
-      <div className="bg-white rounded-2xl shadow-2xl border border-stone-300 w-full max-w-5xl max-h-[94vh] flex flex-col overflow-hidden animate-fade-in my-auto">
+      <div className="bg-[var(--surface)] rounded-2xl shadow-2xl border border-[var(--border-strong)] w-full max-w-5xl max-h-[94vh] flex flex-col overflow-hidden animate-fade-in my-auto">
         {/* Modal Top Bar (Hidden on Print) */}
-        <div className="p-4 bg-stone-900 text-white flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0 print:hidden">
+        <div className="p-4 bg-[var(--ink)] text-white flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0 print:hidden">
           <div className="flex items-center gap-2.5">
-            <GraduationCap className="w-5 h-5 text-amber-400 shrink-0" />
+            <GraduationCap className="w-5 h-5 text-[var(--accent)] shrink-0" />
             <div>
               <h2 className="text-sm font-black tracking-tight text-white flex items-center gap-2">
                 <span>숭신고등학교 진로진학상담부 2028 대입 진학상담 리포트</span>
                 {pdfSuccess && (
-                  <span className="inline-flex items-center gap-1 text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                  <span className="inline-flex items-center gap-1 text-[10px] bg-[var(--good)]/20 text-[var(--good)] px-2 py-0.5 rounded-full font-bold">
                     <FileCheck className="w-3 h-3" />
                     PDF 다운로드 완료
                   </span>
                 )}
               </h2>
-              <p className="text-[11px] text-stone-300 font-medium">
+              <p className="text-[11px] text-[var(--muted)] font-medium">
                 A4 규격 인쇄 및 PDF 저장용 정식 출력 양식 (고대비 가독성 강화)
               </p>
             </div>
@@ -188,7 +188,7 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
               href={printUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-stone-950 font-black rounded-lg text-xs transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[var(--accent)] hover:bg-[var(--accent)]/80 text-white font-black rounded-lg text-xs transition-colors shadow-xs"
               title="새 탭에서 열어 브라우저 고화질 PDF 저장 및 A4 출력을 실행합니다."
             >
               <ExternalLink className="w-4 h-4" />
@@ -199,7 +199,7 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
             <button
               onClick={handleDownloadPdf}
               disabled={isGeneratingPdf}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-700 hover:bg-blue-600 text-white font-bold rounded-lg text-xs transition-colors cursor-pointer shadow-xs disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--korean)] hover:bg-[var(--korean)] text-white font-bold rounded-lg text-xs transition-colors cursor-pointer shadow-xs disabled:opacity-60"
               title="A4 규격의 고화질 PDF 파일로 바로 다운로드합니다."
             >
               {isGeneratingPdf ? (
@@ -218,16 +218,16 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
             {/* Standard browser print */}
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-stone-800 hover:bg-stone-700 text-white font-bold rounded-lg text-xs transition-colors cursor-pointer border border-stone-700"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--ink)] hover:bg-[var(--ink-secondary)] text-white font-bold rounded-lg text-xs transition-colors cursor-pointer border border-[var(--border-strong)]"
               title="브라우저 인쇄 대화상자를 호출합니다."
             >
-              <Printer className="w-4 h-4 text-stone-300" />
+              <Printer className="w-4 h-4 text-[var(--muted)]" />
               <span>A4 인쇄</span>
             </button>
 
             <button
               onClick={onClose}
-              className="p-1.5 text-stone-400 hover:text-white rounded-lg hover:bg-stone-800 transition-colors cursor-pointer"
+              className="p-1.5 text-[var(--muted)] hover:text-white rounded-lg hover:bg-[var(--ink)] transition-colors cursor-pointer"
               title="닫기"
             >
               <X className="w-5 h-5" />
@@ -237,14 +237,14 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
 
         {/* Error message alert if iframe blocks direct generation */}
         {errorMessage && (
-          <div className="bg-amber-500/10 border-b border-amber-300 text-amber-900 px-4 py-2 text-xs flex items-center gap-2">
-            <Info className="w-4 h-4 text-amber-700 shrink-0" />
+          <div className="bg-[var(--accent)]/10 border-b border-[var(--accent)]/30 text-[var(--accent)] px-4 py-2 text-xs flex items-center gap-2">
+            <Info className="w-4 h-4 text-[var(--accent)] shrink-0" />
             <span>{errorMessage}</span>
           </div>
         )}
 
         {/* Printable Document Body */}
-        <div className="flex-1 overflow-y-auto overflow-x-auto bg-stone-100/70 p-2 sm:p-4 md:p-6 flex justify-center">
+        <div className="flex-1 overflow-y-auto overflow-x-auto bg-[var(--surface-alt)]/70 p-2 sm:p-4 md:p-6 flex justify-center">
           <div className="w-full max-w-[210mm]">
             <ConsultationReportContent
               student={student}
@@ -258,14 +258,14 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
         </div>
 
         {/* Modal Bottom Controls */}
-        <div className="p-4 bg-stone-100 border-t border-stone-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0 print:hidden text-xs">
-          <div className="text-stone-600 text-[11px] font-medium leading-tight">
+        <div className="p-4 bg-[var(--surface-alt)] border-t border-[var(--border-strong)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0 print:hidden text-xs">
+          <div className="text-[var(--ink-secondary)] text-[11px] font-medium leading-tight">
             * 숭신고 미래인재반 전용 양식입니다. 미리보기 창(아이프레임)에서 인쇄창이 열리지 않을 경우{' '}
             <a
               href={printUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-800 font-bold underline hover:text-amber-900 inline-flex items-center gap-0.5 ml-1"
+              className="text-[var(--accent)] font-bold underline hover:text-[var(--accent)] inline-flex items-center gap-0.5 ml-1"
             >
               [새 창에서 인쇄 / PDF 저장]
               <ExternalLink className="w-3 h-3" />
@@ -275,7 +275,7 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
           <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
             <button
               onClick={onClose}
-              className="px-4 py-1.5 bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold rounded-lg cursor-pointer transition-colors"
+              className="px-4 py-1.5 bg-[var(--border)] hover:bg-[var(--border-strong)] text-[var(--ink)] font-bold rounded-lg cursor-pointer transition-colors"
             >
               닫기
             </button>
@@ -283,7 +283,7 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
               href={printUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-1.5 bg-amber-400 hover:bg-amber-300 text-stone-950 font-black rounded-lg cursor-pointer shadow-xs flex items-center gap-1.5 transition-colors"
+              className="px-3.5 py-1.5 bg-[var(--accent)] hover:bg-[var(--accent)]/80 text-white font-black rounded-lg cursor-pointer shadow-xs flex items-center gap-1.5 transition-colors"
             >
               <ExternalLink className="w-4 h-4" />
               <span>새 창에서 인쇄 / PDF</span>
@@ -291,7 +291,7 @@ export const ConsultationReportModal: React.FC<ConsultationReportModalProps> = (
             <button
               onClick={handleDownloadPdf}
               disabled={isGeneratingPdf}
-              className="px-4 py-1.5 bg-blue-700 hover:bg-blue-800 text-white font-black rounded-lg cursor-pointer shadow-xs flex items-center gap-1.5 transition-colors disabled:opacity-60"
+              className="px-4 py-1.5 bg-[var(--korean)] hover:bg-[var(--korean)] text-white font-black rounded-lg cursor-pointer shadow-xs flex items-center gap-1.5 transition-colors disabled:opacity-60"
             >
               {isGeneratingPdf ? (
                 <>
